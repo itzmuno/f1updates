@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Formula 1 | The Official Home of Racing</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0c12;
+            font-family: 'Inter', 'Titillium Web', sans-serif;
+            color: #ffffff;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1e2a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e10600;
+            border-radius: 6px;
+        }
+
+        /* main container */
+        .site-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: radial-gradient(circle at 20% 30%, #0f121c, #05070c);
+        }
+
+        /* header & navigation */
+        .header {
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(225, 6, 0, 0.3);
+            background: rgba(5, 7, 12, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .f1-badge {
+            font-size: 1.9rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, #e10600 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .f1-badge span {
+            font-size: 1rem;
+            font-weight: 500;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #e10600;
+            margin-left: 4px;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #aaa;
+            border-left: 2px solid #e10600;
+            padding-left: 12px;
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: #e10600;
+        }
+
+        .btn-outline {
+            border: 1.5px solid #e10600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #e10600;
+            color: white;
+            border-color: #e10600;
+        }
+
+        /* hero section with speed & f1 identity */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem 5rem;
+            background: linear-gradient(125deg, #00000055, #0a0c12cc), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJjaGVja3MiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDE1KSI+PHJlY3Qgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0icmdiYigyNTUsMjU1LDI1NSwwLjAyKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNjaGVja3MpIi8+PC9zdmc+');
+            border-bottom: 2px solid #e10600;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #e10600, #ff5e3a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1rem auto;
+            color: #ddd;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #e10600;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 8px 20px rgba(225,6,0,0.3);
+        }
+
+        .btn-primary:hover {
+            background: #b10500;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: rgba(20,20,30,0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(225,6,0,0.6);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #e1060022;
+            border-color: #e10600;
+        }
+
+        /* section common */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            border-left: 5px solid #e10600;
+            padding-left: 1.2rem;
+        }
+
+        /* F1 TV card grid */
+        .tv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .tv-card {
+            background: rgba(15, 18, 28, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            border: 1px solid rgba(225,6,0,0.25);
+            overflow: hidden;
+            transition: all 0.25s ease;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tv-card:hover {
+            transform: translateY(-8px);
+            border-color: #e10600;
+            box-shadow: 0 20px 30px -12px rgba(225,6,0,0.2);
+        }
+
+        /* Image container for card visuals */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(145deg, #1a1e2c, #0d0f18);
+            position: relative;
+        }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+        .tv-card:hover .card-image img {
+            transform: scale(1.03);
+        }
+        .card-media-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #e10600;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-left: 2px solid #e10600;
+        }
+
+        .tv-card h3 {
+            font-size: 1.8rem;
+            padding: 1rem 1.2rem 0.2rem;
+            font-weight: 700;
+        }
+
+        .tv-card p {
+            padding: 0 1.2rem 1rem;
+            color: #bcbcbc;
+            flex-grow: 1;
+        }
+
+        .watch-badge {
+            display: inline-block;
+            margin: 0 1.2rem 1.5rem;
+            background: #e1060011;
+            color: #ff9f8f;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 0.5px solid #e1060066;
+            width: fit-content;
+        }
+
+        /* Grand Prix schedule */
+        .gp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .gp-item {
+            background: rgba(10,12,20,0.7);
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border: 1px solid #252836;
+            transition: 0.2s;
+        }
+
+        .gp-item:hover {
+            border-color: #e10600;
+            background: #0f111ccc;
+        }
+
+        .gp-flag {
+            font-size: 2rem;
+            width: 60px;
+        }
+
+        .gp-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex: 2;
+            margin-left: 1rem;
+        }
+
+        .gp-date {
+            color: #e10600;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .gp-watch {
+            background: none;
+            border: 1px solid #e10600;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .gp-watch:hover {
+            background: #e10600;
+        }
+
+        /* Anywhere access banner */
+        .anywhere-banner {
+            background: linear-gradient(115deg, #0f0f1c, #080a12);
+            border-radius: 2rem;
+            margin: 2rem 0 1rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid #e1060055;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.6);
+        }
+
+        .anywhere-banner i {
+            font-size: 3rem;
+            color: #e10600;
+            margin-bottom: 0.8rem;
+        }
+
+        .anywhere-banner h2 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .anywhere-banner p {
+            max-width: 600px;
+            margin: 0.8rem auto;
+            color: #ccc;
+        }
+
+        /* footer */
+        .footer {
+            background: #03050a;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid #e1060033;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons a {
+            color: #ddd;
+            font-size: 1.5rem;
+            transition: 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: #e10600;
+        }
+
+        /* responsive */
+        @media (max-width: 800px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .section {
+                padding: 3rem 1.2rem;
+            }
+            .gp-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .gp-flag {
+                width: auto;
+            }
+            .tv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="site-wrapper">
+    <!-- header navigation -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="f1-badge">FORMULA 1<span>®</span></div>
+            <div class="tagline">The official home of racing</div>
+        </div>
+        <div class="nav-links">
+            <a href="#">RACING</a>
+            <a href="#">DRIVERS</a>
+            <a href="#">TEAMS</a>
+            <a href="#" class="btn-outline">TV SCHEDULE</a>
+        </div>
+    </header>
+
+    <!-- hero / main intro -->
+    <section class="hero">
+        <h1>FUEL THE NEED FOR SPEED</h1>
+        <p>Experience the thrill of Formula 1® — the pinnacle of motorsport. Every race, every moment, live and on-demand.</p>
+        <div class="hero-cta">
+            <button class="btn-primary" id="watchNowHeroBtn"><i class="fas fa-play-circle"></i> WATCH GRAND PRIX</button>
+            <button class="btn-secondary" id="exploreTvBtn"><i class="fas fa-tv"></i> EXPLORE F1 TV</button>
+        </div>
+    </section>
+
+    <!-- F1 TV section - watch Grand Prixs anytime anywhere with images -->
+    <div class="section" id="tvSection">
+        <div class="container">
+            <div class="section-title">
+                <i class="fas fa-broadcast-tower" style="color:#e10600; margin-right: 12px;"></i> F1 TV — Anywhere, Anytime
+            </div>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color:#ccc;">Stream every Grand Prix live, onboard cameras, team radios & full replays. All devices, no limits.</p>
+            <div class="tv-grid">
+                <!-- Card 1: Live & On-Demand (generic race action) -->
+                <div class="tv-card">
+                    <div class="card-image">
+                        <!-- placeholer image for live racing / dynamic feel, but we also embed a nice F1-style image -->
+                        <img src="https://placehold.co/800x500/1e1e2e/e10600?text=F1+LIVE+RACING" alt="Formula 1 live racing" style="object-fit:cover;">
+                        <div class="card-media-icon"><i class="fas fa-globe"></i> Live</div>
+                    </div>
+                    <h3>Live & On-Demand</h3>
+                    <p>Watch every session: Practice, Qualifying & Race Day. Full replays available minutes after chequered flag.</p>
+                    <span class="watch-badge"><i class="fas fa-clock"></i> 24/7 access</span>
+                </div>
+                <!-- Card 2: Onboard & Team Radio - CUSTOM IMAGE from download(12).jpg (F1 cockpit/onboard view) -->
+                <div class="tv-card" id="onboardCard">
+                    <div class="card-image">
+                        <img id="onboardImage" src="download(12).jpg" alt="F1 Onboard Camera & Team Radio View" onerror="this.onerror=null; this.src='https://placehold.co/800x500/1a1e2c/e10600?text=F1+ONBOARD+CAM';">
+                        <div class="card-media-icon"><i class="fas fa-video"></i> Onboard</div>
+                    </div>
+                    <h3>Onboard & Team Radio</h3>
+                    <p>Choose from 20+ onboard cameras, listen to live team radio, and feel the intensity from the cockpit.</p>
+                    <span class="watch-badge"><i class="fas fa-headset"></i> Exclusive audio</span>
+                </div>
+                <!-- Card 3: Watch Anywhere -->
+                <div class="tv-card">
+                    <div class="card-image">
+                        <img src="https://placehold.co/800x500/1a1e2c/e10600?text=ANY+DEVICE+STREAMING" alt="Stream on any device">
+                        <div class="card-media-icon"><i class="fas fa-mobile-alt"></i> Anywhere</div>
+                    </div>
+                    <h3>Watch Anywhere</h3>
+                    <p>iOS, Android, web, smart TV — take F1 with you. Offline downloads available for Pro subscribers.</p>
+                    <span class="watch-badge"><i class="fas fa-download"></i> Download & Go</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Grand Prix schedule section -->
+    <div class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-title">
+                <i class="fas fa-flag-checkered" style="color:#e10600;"></i> 2026 GRAND PRIX CALENDAR
+            </div>
+            <div class="gp-list" id="gpListContainer">
+                <!-- dynamic grand prix via JS -->
+            </div>
+            <div class="anywhere-banner">
+                <i class="fas fa-tv"></i>
+                <h2>Watch Grand Prixs <span style="color:#e10600;">Anytime Anywhere</span></h2>
+                <p>Subscribe to F1 TV Pro and never miss a moment. Live coverage, expert analysis, and full access to the world's fastest sport.</p>
+                <button class="btn-primary" id="subscribeBtn" style="margin-top: 1rem; background:#e10600;"><i class="fas fa-ticket-alt"></i> START WATCHING NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- additional info: F1 official streaming -->
+    <div class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="tv-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px,1fr));">
+                <div style="background: #0a0c1a; border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                    <i class="fas fa-chart-line fa-2x" style="color:#e10600;"></i>
+                    <h3 style="margin: 0.8rem 0;">Live Timing</h3>
+                    <p style="font-size:0.9rem;">Real-time sector times, gaps and leaderboard.</p>
+                </div>
+                <div style="background: #0a0c1a; border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                    <i class="fas fa-microphone-alt fa-2x" style="color:#e10600;"></i>
+                    <h3 style="margin: 0.8rem 0;">Expert Commentary</h3>
+                    <p style="font-size:0.9rem;">Pre-race show, post-race analysis & interviews.</p>
+                </div>
+                <div style="background: #0a0c1a; border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                    <i class="fas fa-history fa-2x" style="color:#e10600;"></i>
+                    <h3 style="margin: 0.8rem 0;">Full Archive</h3>
+                    <p style="font-size:0.9rem;">Relive classic races from 1981 till today.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>© 2026 Formula One World Championship Limited. F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trademarks of Formula One Licensing BV. <br>Watch Grand Prixs anytime anywhere — official live streaming and highlights.</p>
+        <p style="margin-top: 1rem;"><i class="fas fa-tv"></i> Stream on desktop, mobile, tablet — never miss the lights out.</p>
+    </footer>
+</div>
+
+<script>
+    // Grand Prix schedule data (iconic 2026 season indicative)
+    const grandPrixData = [
+        { flag: "🇦🇺", name: "Australian Grand Prix", location: "Melbourne", date: "March 15-17", watchLink: "#" },
+        { flag: "🇨🇳", name: "Chinese Grand Prix", location: "Shanghai", date: "March 29-31", watchLink: "#" },
+        { flag: "🇯🇵", name: "Japanese Grand Prix", location: "Suzuka", date: "April 5-7", watchLink: "#" },
+        { flag: "🇧🇭", name: "Bahrain Grand Prix", location: "Sakhir", date: "April 19-21", watchLink: "#" },
+        { flag: "🇺🇸", name: "Miami Grand Prix", location: "Miami", date: "May 3-5", watchLink: "#" },
+        { flag: "🇲🇨", name: "Monaco Grand Prix", location: "Monte Carlo", date: "May 23-25", watchLink: "#" },
+        { flag: "🇨🇦", name: "Canadian Grand Prix", location: "Montreal", date: "June 7-9", watchLink: "#" },
+        { flag: "🇬🇧", name: "British Grand Prix", location: "Silverstone", date: "July 4-6", watchLink: "#" },
+        { flag: "🇧🇪", name: "Belgian Grand Prix", location: "Spa-Francorchamps", date: "July 25-27", watchLink: "#" },
+        { flag: "🇳🇱", name: "Dutch Grand Prix", location: "Zandvoort", date: "August 29-31", watchLink: "#" },
+        { flag: "🇮🇹", name: "Italian Grand Prix", location: "Monza", date: "September 5-7", watchLink: "#" },
+        { flag: "🇸🇬", name: "Singapore Grand Prix", location: "Marina Bay", date: "September 19-21", watchLink: "#" }
+    ];
+
+    function renderGPList() {
+        const container = document.getElementById('gpListContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        grandPrixData.forEach(gp => {
+            const gpItem = document.createElement('div');
+            gpItem.className = 'gp-item';
+            gpItem.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                    <span class="gp-flag">${gp.flag}</span>
+                    <span class="gp-name">${gp.name} · ${gp.location}</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="gp-date"><i class="far fa-calendar-alt"></i> ${gp.date}</span>
+                    <button class="gp-watch watch-gp-btn" data-gp="${gp.name}"><i class="fas fa-play"></i> WATCH</button>
+                </div>
+            `;
+            container.appendChild(gpItem);
+        });
+
+        // attach event listeners to all watch buttons
+        document.querySelectorAll('.watch-gp-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const gpName = btn.getAttribute('data-gp') || 'Grand Prix';
+                alert(`🎬 F1 TV: You're about to watch ${gpName}. Sign in or subscribe to start streaming anytime, anywhere!`);
+            });
+        });
+    }
+
+    // handle hero & cta buttons to simulate watch action
+    function initInteractions() {
+        const watchNowHero = document.getElementById('watchNowHeroBtn');
+        const exploreTv = document.getElementById('exploreTvBtn');
+        const subscribeBtn = document.getElementById('subscribeBtn');
+
+        if (watchNowHero) {
+            watchNowHero.addEventListener('click', () => {
+                alert("🏁 F1 TV Pro: Stream the next Grand Prix live! Subscribe to watch every session on any device. Relive classic races.");
+            });
+        }
+        if (exploreTv) {
+            exploreTv.addEventListener('click', () => {
+                const tvSection = document.getElementById('tvSection');
+                if (tvSection) {
+                    tvSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert("Explore F1 TV packages: Live timing, onboard cameras, full replays and more!");
+                }
+            });
+        }
+        if (subscribeBtn) {
+            subscribeBtn.addEventListener('click', () => {
+                alert("✅ Start watching Formula 1 anywhere, anytime. Choose monthly or annual plan. Unlimited access to every Grand Prix.");
+            });
+        }
+    }
+
+    // Function to ensure the onboard image is properly handled and add extra effect
+    function enhanceOnboardImage() {
+        const onboardImg = document.getElementById('onboardImage');
+        if (onboardImg) {
+            // If the image fails to load, we already set onerror fallback in img tag
+            onboardImg.addEventListener('load', () => {
+                console.log("✅ Onboard & team radio image loaded successfully: download(12).jpg");
+            });
+            onboardImg.addEventListener('error', () => {
+                console.warn("⚠️ Could not load download(12).jpg. Make sure the file is in the same directory as the HTML file. Using placeholder fallback.");
+                // The onerror attribute already handles fallback, but we add a small note
+                const cardMediaDiv = document.querySelector('#onboardCard .card-media-icon');
+                if (cardMediaDiv) {
+                    cardMediaDiv.style.borderLeftColor = "#ffaa00";
+                }
+            });
+        }
+    }
+
+    // Additional fun: Add click effect on tv cards showing F1 spirit
+    function addCardInteractions() {
+        const tvCards = document.querySelectorAll('.tv-card');
+        tvCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if(e.target.tagName === 'BUTTON' || e.target.closest('.watch-badge') || e.target.closest('.gp-watch')) return;
+                const title = card.querySelector('h3')?.innerText || 'F1 TV feature';
+                alert(`🎥 ${title}: Experience the best of Formula 1 streaming. Watch Grand Prixs anytime, anywhere.`);
+            });
+        });
+    }
+
+    // DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+        renderGPList();
+        initInteractions();
+        enhanceOnboardImage();
+        addCardInteractions();
+        
+        // Additional style for image card hover - already in CSS
+        console.log("Formula 1 | The official home of racing — watch Grand Prixs anytime anywhere | Onboard & team radio image integrated");
+    });
+</script>
+</body>
+</html>
