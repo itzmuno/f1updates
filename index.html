@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Formula 1 | Official Site - Live Standings & News</title>
+    <title>Formula 1 | Official Site - Live Standings, News & Schedule</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
@@ -84,6 +84,7 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -199,12 +200,12 @@
             border-left: 5px solid #e10600;
             padding-left: 1.2rem;
         }
-        .tv-grid {
+        .watch-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        .tv-card {
+        .watch-card {
             background: rgba(15, 18, 28, 0.7);
             backdrop-filter: blur(4px);
             border-radius: 28px;
@@ -212,7 +213,7 @@
             overflow: hidden;
             transition: all 0.25s ease;
         }
-        .tv-card:hover {
+        .watch-card:hover {
             transform: translateY(-8px);
             border-color: #e10600;
         }
@@ -233,47 +234,14 @@
             height: auto;
             display: block;
         }
-        .tv-card h3 {
+        .watch-card h3 {
             font-size: 1.8rem;
             padding: 1rem 1.2rem 0.2rem;
         }
-        .tv-card p {
+        .watch-card p {
             padding: 0 1.2rem 1.2rem;
             color: #bcbcbc;
         }
-        .gp-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .gp-item {
-            background: rgba(10,12,20,0.7);
-            border-radius: 20px;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            border: 1px solid #252836;
-            cursor: pointer;
-        }
-        .gp-item:hover {
-            border-color: #e10600;
-            background: #0f111ccc;
-        }
-        .gp-flag { font-size: 2rem; width: 60px; }
-        .gp-name { font-weight: 700; font-size: 1.2rem; flex: 2; margin-left: 1rem; }
-        .gp-date { color: #e10600; font-weight: 600; margin-right: 1rem; }
-        .gp-watch {
-            background: none;
-            border: 1px solid #e10600;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .gp-watch:hover { background: #e10600; }
         .anywhere-banner {
             background: linear-gradient(115deg, #0f0f1c, #080a12);
             border-radius: 2rem;
@@ -319,7 +287,7 @@
         .driver-country { display: inline-flex; align-items: center; gap: 6px; background: #1a1e2c; padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.8rem; }
         .btn-driver-action { margin-top: 1.2rem; width: 100%; background: transparent; border: 1px solid #e10600; padding: 0.8rem; border-radius: 40px; font-weight: 700; color: #e10600; cursor: pointer; }
 
-        /* ========== TEAMS PAGE (Current Standings + Updated News) ========== */
+        /* ========== TEAMS PAGE ========== */
         .teams-hero {
             padding: 3rem 2rem;
             text-align: center;
@@ -404,6 +372,89 @@
         }
         .read-more { color: #e10600; font-weight: 600; display: flex; align-items: center; gap: 5px; }
 
+        /* ========== TV SCHEDULE PAGE ========== */
+        .schedule-hero {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0b0e16, #05070c);
+            border-bottom: 2px solid #e10600;
+        }
+        .schedule-hero h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, #fff, #e10600); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .schedule-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .race-schedule-card {
+            background: rgba(10,12,20,0.8);
+            border-radius: 24px;
+            border: 1px solid rgba(225,6,0,0.3);
+            overflow: hidden;
+            transition: 0.2s;
+        }
+        .race-schedule-card:hover {
+            border-color: #e10600;
+            background: #0f111ccc;
+        }
+        .race-header {
+            background: linear-gradient(135deg, #1a1f2e, #0f111c);
+            padding: 1.2rem 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(225,6,0,0.3);
+        }
+        .race-flag { font-size: 2.5rem; }
+        .race-title { font-size: 1.4rem; font-weight: 800; }
+        .race-dates { color: #e10600; font-weight: 600; margin-left: auto; }
+        .session-times {
+            padding: 1.2rem 1.8rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .session {
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            padding: 0.8rem;
+            text-align: center;
+        }
+        .session-name { font-weight: 700; color: #e10600; margin-bottom: 0.3rem; }
+        .session-time { font-size: 0.9rem; color: #ddd; }
+        .broadcast-info {
+            padding: 0.8rem 1.8rem 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .channel-tag {
+            background: #1a1e2c;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .watch-schedule-btn {
+            background: #e10600;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .watch-schedule-btn:hover {
+            background: #b10500;
+            transform: scale(1.02);
+        }
+
         /* Paywall Modal */
         .paywall-overlay {
             position: fixed;
@@ -448,7 +499,6 @@
             transition: 0.2s;
         }
         .paywall-btn.secondary { background: transparent; border: 1px solid #e10600; color: white; }
-        .paywall-btn:hover { transform: scale(1.02); background: #b10500; }
         .close-paywall {
             margin-top: 1.5rem;
             color: #aaa;
@@ -519,6 +569,8 @@
             .header { flex-direction: column; gap: 1rem; }
             .hero h1 { font-size: 2.6rem; }
             .news-grid { grid-template-columns: 1fr; }
+            .race-header { flex-direction: column; text-align: center; }
+            .race-dates { margin-left: 0; }
         }
     </style>
 </head>
@@ -533,7 +585,8 @@
             <a id="navHome" class="active">RACING</a>
             <a id="navDrivers">DRIVERS</a>
             <a id="navTeams">TEAMS</a>
-            <a id="navTV" class="btn-outline">TV SCHEDULE</a>
+            <a id="navSchedule">TV SCHEDULE</a>
+            <a id="navWatch" class="btn-outline">WATCH F1</a>
         </div>
     </header>
 
@@ -544,24 +597,23 @@
             <p>Experience the thrill of Formula 1® — the pinnacle of motorsport. Live races, onboard action.</p>
             <div class="hero-cta">
                 <button class="btn-primary" id="watchNowHeroBtn"><i class="fas fa-play-circle"></i> WATCH GRAND PRIX</button>
-                <button class="btn-secondary" id="exploreTvBtn"><i class="fas fa-tv"></i> EXPLORE F1 TV</button>
+                <button class="btn-secondary" id="exploreBtn"><i class="fas fa-tv"></i> VIEW TV SCHEDULE</button>
             </div>
         </section>
         <div class="section">
             <div class="container">
-                <div class="section-title"><i class="fas fa-broadcast-tower" style="color:#e10600;"></i> F1 TV — Anywhere, Anytime</div>
-                <div class="tv-grid">
-                    <div class="tv-card"><div class="card-media"><i class="fas fa-globe-americas fa-3x"></i></div><h3>Live & On-Demand</h3><p>Watch every session: Practice, Qualifying & Race Day.</p></div>
-                    <div class="tv-card"><div class="card-image-media"><img src="download(12).jpg" alt="F1 onboard" onerror="this.src='https://placehold.co/600x400/1a1e2c/e10600?text=F1+Onboard';"></div><h3>Onboard & Team Radio</h3><p>20+ onboard cameras and live team radio.</p></div>
-                    <div class="tv-card"><div class="card-media"><i class="fas fa-mobile-alt fa-3x"></i></div><h3>Watch Anywhere</h3><p>iOS, Android, web, smart TV — take F1 with you.</p></div>
+                <div class="section-title"><i class="fas fa-broadcast-tower" style="color:#e10600;"></i> Watch F1 — Anywhere, Anytime</div>
+                <div class="watch-grid">
+                    <div class="watch-card"><div class="card-media"><i class="fas fa-globe-americas fa-3x"></i></div><h3>Live & On-Demand</h3><p>Watch every session: Practice, Qualifying & Race Day.</p></div>
+                    <div class="watch-card"><div class="card-image-media"><img src="download(12).jpg" alt="F1 onboard" onerror="this.src='https://placehold.co/600x400/1a1e2c/e10600?text=F1+Onboard';"></div><h3>Onboard & Team Radio</h3><p>20+ onboard cameras and live team radio.</p></div>
+                    <div class="watch-card"><div class="card-media"><i class="fas fa-mobile-alt fa-3x"></i></div><h3>Watch Anywhere</h3><p>iOS, Android, web, smart TV — take F1 with you.</p></div>
                 </div>
             </div>
         </div>
         <div class="section" style="padding-top:0">
             <div class="container">
-                <div class="section-title"><i class="fas fa-flag-checkered" style="color:#e10600;"></i> 2026 GRAND PRIX CALENDAR</div>
-                <div class="gp-list" id="gpListContainer"></div>
-                <div class="anywhere-banner"><i class="fas fa-tv"></i><h2>Watch Grand Prixs <span style="color:#e10600;">Anytime Anywhere</span></h2><button class="btn-primary" id="subscribeBtn">START WATCHING NOW</button></div>
+                <div class="section-title"><i class="fas fa-flag-checkered" style="color:#e10600;"></i> Next Grand Prix</div>
+                <div class="anywhere-banner"><i class="fas fa-tv"></i><h2>Watch Formula 1 <span style="color:#e10600;">Live & On Demand</span></h2><button class="btn-primary" id="subscribeBtnHome">START WATCHING NOW</button></div>
             </div>
         </div>
     </div>
@@ -572,7 +624,7 @@
         <div class="container" style="padding: 2rem;"><div class="drivers-grid" id="driversGridContainer"></div></div>
     </div>
 
-    <!-- TEAMS PAGE (Current Constructors Standings + Updated News) -->
+    <!-- TEAMS PAGE -->
     <div id="teamsPage" class="page">
         <div class="teams-hero"><h1><i class="fas fa-building"></i> FORMULA 1 CONSTRUCTORS</h1><p>Current 2026 Championship Standings (Updated after Australian GP)</p></div>
         <div class="container" style="padding: 2rem;">
@@ -587,12 +639,20 @@
         </div>
     </div>
 
+    <!-- TV SCHEDULE PAGE -->
+    <div id="schedulePage" class="page">
+        <div class="schedule-hero"><h1><i class="fas fa-calendar-alt"></i> 2026 F1 TV SCHEDULE</h1><p>Full broadcast schedule with session times and channels</p></div>
+        <div class="container" style="padding: 2rem;">
+            <div class="schedule-grid" id="scheduleContainer"></div>
+        </div>
+    </div>
+
     <!-- Paywall Modal -->
     <div id="paywallModal" class="paywall-overlay">
         <div class="paywall-container">
             <i class="fas fa-lock"></i>
-            <h2>Subscribe to Watch</h2>
-            <p>Stream every Grand Prix live, onboard cameras, and full replays. Get access to F1 TV Pro.</p>
+            <h2>Subscribe to Watch F1</h2>
+            <p>Stream every Grand Prix live, onboard cameras, and full replays. Get access to official F1 coverage.</p>
             <div class="paywall-buttons">
                 <button class="paywall-btn" id="monthlyPlan">Monthly - $9.99</button>
                 <button class="paywall-btn secondary" id="yearlyPlan">Yearly - $79.99</button>
@@ -614,12 +674,12 @@
 
     <footer class="footer">
         <div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
-        <p>© 2026 Formula One World Championship Limited. Official live streaming available via F1 TV Pro.</p>
+        <p>© 2026 Formula One World Championship Limited. Official live streaming available via Watch F1.</p>
     </footer>
 </div>
 
 <script>
-    // UPDATED 2026 Constructors Standings (current after Australian GP)
+    // Constructors Standings (updated)
     const constructorsData = [
         { pos: 1, name: "Oracle Red Bull Racing", engine: "Honda RBPT", points: 287, wins: 6 },
         { pos: 2, name: "Scuderia Ferrari", engine: "Ferrari", points: 252, wins: 3 },
@@ -633,14 +693,47 @@
         { pos: 10, name: "Haas F1 Team", engine: "Ferrari", points: 12, wins: 0 }
     ];
 
-    // UPDATED Fresh News (April 2026)
+    // News articles
     const teamNews = [
-        { id: 1, team: "Red Bull Racing", title: "Verstappen dominates Australian GP for 57th win", summary: "Max Verstappen leads every lap in Melbourne, extends championship lead to 28 points.", fullContent: "Max Verstappen delivered a flawless performance at Albert Park, securing his fourth consecutive victory of the season. The Dutchman finished 12.4 seconds ahead of teammate Sergio Pérez. 'The car was on rails today,' said Verstappen. 'We're aiming for another dominant season.' Red Bull now leads the constructors' standings by 35 points.", date: "April 10, 2026" },
-        { id: 2, team: "Ferrari", title: "Ferrari's technical revolution: New floor debuts in Japan", summary: "Scuderia Ferrari introduces radical floor upgrade for Suzuka, targeting Red Bull's supremacy.", fullContent: "Ferrari has unveiled a heavily revised floor and rear wing assembly ahead of the Japanese Grand Prix. The upgrades, developed over the winter break, aim to improve aerodynamic efficiency in medium-speed corners. Charles Leclerc commented: 'We feel a step forward. The team is pushing flat out.' Early simulations show promising gains.", date: "April 8, 2026" },
-        { id: 3, team: "McLaren", title: "Norris signs record $150M extension", summary: "Lando Norris commits to McLaren through 2029 in landmark deal for the papaya team.", fullContent: "McLaren has secured its future with Lando Norris signing a multi-year extension reportedly worth $150 million. The British driver, who took his second career win in 2025, expressed excitement: 'We're building a championship contender.' CEO Zak Brown called it 'the most important signing in McLaren's modern era.'", date: "April 6, 2026" },
-        { id: 4, team: "Mercedes", title: "Antonelli shocks with podium in Shanghai", summary: "Kimi Antonelli becomes youngest Mercedes driver to reach podium at Chinese GP.", fullContent: "Mercedes rookie Kimi Antonelli delivered a stunning drive to finish P3 in China, becoming the youngest driver to score a podium for the Silver Arrows. The 19-year-old Italian managed tyre degradation masterfully. Toto Wolff: 'He's special. The future is bright.' Antonelli now sits 7th in the drivers' standings.", date: "April 4, 2026" },
-        { id: 5, team: "Aston Martin", title: "Alonso hints at 2027 extension", summary: "Fernando Alonso open to continuing beyond current contract as Aston Martin gains momentum.", fullContent: "Double world champion Fernando Alonso revealed he's in talks for a contract extension until 2027. 'I feel as motivated as ever,' the Spaniard said after a double-points finish in Melbourne. Team owner Lawrence Stroll is keen to retain Alonso as the team targets regular podiums.", date: "April 2, 2026" },
-        { id: 6, team: "Williams", title: "Williams announces new technical partnership", summary: "Grove-based team signs multi-year deal with leading engineering firm to boost performance.", fullContent: "Williams Racing has announced a new technical collaboration with CAD巨头 to enhance aerodynamic development. Team Principal James Vowles: 'This partnership will accelerate our return to the front.' The team has shown promising pace in 2026, with Alex Albon scoring points in two of three races.", date: "March 30, 2026" }
+        { id: 1, team: "Red Bull Racing", title: "Verstappen dominates Australian GP for 57th win", summary: "Max Verstappen leads every lap in Melbourne, extends championship lead to 28 points.", fullContent: "Max Verstappen delivered a flawless performance at Albert Park, securing his fourth consecutive victory of the season. The Dutchman finished 12.4 seconds ahead of teammate Sergio Pérez. 'The car was on rails today,' said Verstappen. Red Bull now leads the constructors' standings by 35 points.", date: "April 10, 2026" },
+        { id: 2, team: "Ferrari", title: "Ferrari's technical revolution: New floor debuts in Japan", summary: "Scuderia Ferrari introduces radical floor upgrade for Suzuka, targeting Red Bull's supremacy.", fullContent: "Ferrari has unveiled a heavily revised floor and rear wing assembly ahead of the Japanese Grand Prix. Charles Leclerc commented: 'We feel a step forward. The team is pushing flat out.'", date: "April 8, 2026" },
+        { id: 3, team: "McLaren", title: "Norris signs record $150M extension", summary: "Lando Norris commits to McLaren through 2029 in landmark deal.", fullContent: "McLaren has secured its future with Lando Norris signing a multi-year extension. 'We're building a championship contender,' Norris said.", date: "April 6, 2026" }
+    ];
+
+    // TV Schedule Data with broadcast channels
+    const tvScheduleData = [
+        { flag: "🇨🇳", name: "Chinese Grand Prix", location: "Shanghai", dates: "April 24-26, 2026", 
+          sessions: [
+              { name: "Practice 1", time: "Fri 11:30 AM" },
+              { name: "Practice 2", time: "Fri 3:00 PM" },
+              { name: "Practice 3", time: "Sat 12:00 PM" },
+              { name: "Qualifying", time: "Sat 3:00 PM" },
+              { name: "Race", time: "Sun 3:00 PM" }
+          ], channels: ["ESPN", "Sky Sports F1", "F1 TV Pro"] },
+        { flag: "🇯🇵", name: "Japanese Grand Prix", location: "Suzuka", dates: "May 8-10, 2026",
+          sessions: [
+              { name: "Practice 1", time: "Fri 11:30 AM" },
+              { name: "Practice 2", time: "Fri 3:00 PM" },
+              { name: "Practice 3", time: "Sat 12:00 PM" },
+              { name: "Qualifying", time: "Sat 3:00 PM" },
+              { name: "Race", time: "Sun 2:00 PM" }
+          ], channels: ["ESPN", "Sky Sports F1", "F1 TV Pro"] },
+        { flag: "🇧🇭", name: "Bahrain Grand Prix", location: "Sakhir", dates: "May 22-24, 2026",
+          sessions: [
+              { name: "Practice 1", time: "Fri 12:00 PM" },
+              { name: "Practice 2", time: "Fri 3:30 PM" },
+              { name: "Practice 3", time: "Sat 12:30 PM" },
+              { name: "Qualifying", time: "Sat 4:00 PM" },
+              { name: "Race", time: "Sun 4:00 PM" }
+          ], channels: ["ESPN", "Sky Sports F1", "F1 TV Pro"] },
+        { flag: "🇲🇨", name: "Monaco Grand Prix", location: "Monte Carlo", dates: "June 5-7, 2026",
+          sessions: [
+              { name: "Practice 1", time: "Fri 10:30 AM" },
+              { name: "Practice 2", time: "Fri 2:00 PM" },
+              { name: "Practice 3", time: "Sat 11:00 AM" },
+              { name: "Qualifying", time: "Sat 2:00 PM" },
+              { name: "Race", time: "Sun 2:00 PM" }
+          ], channels: ["ESPN", "Sky Sports F1", "F1 TV Pro"] }
     ];
 
     const driversData = [
@@ -653,10 +746,7 @@
         { name: "George Russell", team: "Mercedes-AMG", number: 63, country: "United Kingdom", flag: "🇬🇧", wins: 1, podiums: 12 },
         { name: "Kimi Antonelli", team: "Mercedes-AMG", number: 12, country: "Italy", flag: "🇮🇹", wins: 0, podiums: 1 },
         { name: "Fernando Alonso", team: "Aston Martin", number: 14, country: "Spain", flag: "🇪🇸", wins: 32, podiums: 107 },
-        { name: "Lance Stroll", team: "Aston Martin", number: 18, country: "Canada", flag: "🇨🇦", wins: 0, podiums: 3 }
-    ];
-    // (full 20 drivers abbreviated for space, but complete presentation)
-    const fullDriversList = [...driversData, 
+        { name: "Lance Stroll", team: "Aston Martin", number: 18, country: "Canada", flag: "🇨🇦", wins: 0, podiums: 3 },
         { name: "Pierre Gasly", team: "Alpine F1 Team", number: 10, country: "France", flag: "🇫🇷", wins: 1, podiums: 4 },
         { name: "Esteban Ocon", team: "Alpine F1 Team", number: 31, country: "France", flag: "🇫🇷", wins: 1, podiums: 4 },
         { name: "Nico Hülkenberg", team: "Kick Sauber", number: 27, country: "Germany", flag: "🇩🇪", wins: 0, podiums: 0 },
@@ -669,14 +759,6 @@
         { name: "Oliver Bearman", team: "Haas F1 Team", number: 50, country: "United Kingdom", flag: "🇬🇧", wins: 0, podiums: 0 }
     ];
 
-    const grandPrixData = [
-        { flag: "🇦🇺", name: "Australian Grand Prix", location: "Melbourne", date: "April 10-12 (COMPLETED)" },
-        { flag: "🇨🇳", name: "Chinese Grand Prix", location: "Shanghai", date: "April 24-26" },
-        { flag: "🇯🇵", name: "Japanese Grand Prix", location: "Suzuka", date: "May 8-10" },
-        { flag: "🇧🇭", name: "Bahrain Grand Prix", location: "Sakhir", date: "May 22-24" }
-    ];
-
-    // Paywall / Watch functions
     function showPaywall() {
         document.getElementById('paywallModal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -685,33 +767,11 @@
         document.getElementById('paywallModal').classList.remove('active');
         document.body.style.overflow = 'auto';
     }
-    // attach watch handlers to any watch button
-    function attachWatchHandlers() {
-        document.querySelectorAll('.gp-watch, .watch-trigger').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showPaywall();
-            });
-        });
-    }
-
-    function renderHome() {
-        const gpContainer = document.getElementById('gpListContainer');
-        if (gpContainer) {
-            gpContainer.innerHTML = grandPrixData.map(gp => `
-                <div class="gp-item">
-                    <div style="display: flex; align-items: center;"><span class="gp-flag">${gp.flag}</span><span class="gp-name">${gp.name} · ${gp.location}</span></div>
-                    <div><span class="gp-date"><i class="far fa-calendar-alt"></i> ${gp.date}</span><button class="gp-watch watch-trigger"><i class="fas fa-play"></i> WATCH</button></div>
-                </div>
-            `).join('');
-            attachWatchHandlers();
-        }
-    }
 
     function renderDrivers() {
         const container = document.getElementById('driversGridContainer');
         if (container) {
-            container.innerHTML = fullDriversList.map(d => `
+            container.innerHTML = driversData.map(d => `
                 <div class="driver-card">
                     <div class="driver-number-badge">#${d.number}</div>
                     <div class="driver-header"><div class="driver-icon"><i class="fas fa-helmet-safety"></i></div><div class="driver-name-title"><h3>${d.name}</h3><p>${d.team}</p></div></div>
@@ -743,6 +803,29 @@
         }
     }
 
+    function renderSchedule() {
+        const container = document.getElementById('scheduleContainer');
+        if (container) {
+            container.innerHTML = tvScheduleData.map(race => `
+                <div class="race-schedule-card">
+                    <div class="race-header">
+                        <span class="race-flag">${race.flag}</span>
+                        <span class="race-title">${race.name}</span>
+                        <span class="race-dates"><i class="far fa-calendar-alt"></i> ${race.dates}</span>
+                    </div>
+                    <div class="session-times">
+                        ${race.sessions.map(s => `<div class="session"><div class="session-name">${s.name}</div><div class="session-time">${s.time}</div></div>`).join('')}
+                    </div>
+                    <div class="broadcast-info">
+                        <div class="channel-tag"><i class="fas fa-tower-broadcast"></i> ${race.channels.join(' • ')}</div>
+                        <button class="watch-schedule-btn watch-trigger"><i class="fas fa-play"></i> WATCH LIVE</button>
+                    </div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.watch-trigger').forEach(btn => btn.addEventListener('click', () => showPaywall()));
+        }
+    }
+
     window.openNewsDetail = function(id) {
         const article = teamNews.find(n => n.id === id);
         if (article) {
@@ -763,29 +846,35 @@
         document.getElementById('homePage').classList.remove('active-page');
         document.getElementById('driversPage').classList.remove('active-page');
         document.getElementById('teamsPage').classList.remove('active-page');
+        document.getElementById('schedulePage').classList.remove('active-page');
         document.getElementById(pageId).classList.add('active-page');
-        ['navHome', 'navDrivers', 'navTeams'].forEach(id => document.getElementById(id).classList.remove('active'));
+        ['navHome', 'navDrivers', 'navTeams', 'navSchedule'].forEach(id => document.getElementById(id).classList.remove('active'));
         if (pageId === 'homePage') document.getElementById('navHome').classList.add('active');
         if (pageId === 'driversPage') document.getElementById('navDrivers').classList.add('active');
         if (pageId === 'teamsPage') document.getElementById('navTeams').classList.add('active');
+        if (pageId === 'schedulePage') document.getElementById('navSchedule').classList.add('active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        renderHome();
         renderDrivers();
         renderTeams();
+        renderSchedule();
+        
         document.getElementById('navHome').addEventListener('click', () => showPage('homePage'));
         document.getElementById('navDrivers').addEventListener('click', () => showPage('driversPage'));
         document.getElementById('navTeams').addEventListener('click', () => showPage('teamsPage'));
-        document.getElementById('navTV').addEventListener('click', () => showPaywall());
+        document.getElementById('navSchedule').addEventListener('click', () => showPage('schedulePage'));
+        document.getElementById('navWatch').addEventListener('click', () => showPaywall());
         document.getElementById('watchNowHeroBtn').addEventListener('click', () => showPaywall());
-        document.getElementById('subscribeBtn').addEventListener('click', () => showPaywall());
+        document.getElementById('exploreBtn').addEventListener('click', () => showPage('schedulePage'));
+        document.getElementById('subscribeBtnHome').addEventListener('click', () => showPaywall());
         document.getElementById('closePaywall').addEventListener('click', () => hidePaywall());
-        document.getElementById('monthlyPlan').addEventListener('click', () => alert("✅ Payment successful! Welcome to F1 TV Pro. Enjoy live streaming."));
-        document.getElementById('yearlyPlan').addEventListener('click', () => alert("✅ F1 TV Pro Yearly subscription activated. Start watching now!"));
+        document.getElementById('monthlyPlan').addEventListener('click', () => alert("✅ Payment successful! Welcome to Watch F1. Enjoy live streaming."));
+        document.getElementById('yearlyPlan').addEventListener('click', () => alert("✅ Watch F1 Yearly subscription activated. Start watching now!"));
         document.getElementById('paywallModal').addEventListener('click', (e) => { if (e.target === document.getElementById('paywallModal')) hidePaywall(); });
         document.getElementById('newsDetail').addEventListener('click', (e) => { if (e.target === document.getElementById('newsDetail')) closeNewsDetail(); });
-        attachWatchHandlers();
+        
+        document.querySelectorAll('.watch-trigger').forEach(btn => btn.addEventListener('click', () => showPaywall()));
     });
 </script>
 </body>
