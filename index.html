@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Formula 1 | The Official Home of Racing</title>
+    <title>Formula 1 | The Official Home of Racing - Drivers</title>
     <!-- Google Fonts for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 (free icons) -->
@@ -128,7 +128,7 @@
             border-color: #e10600;
         }
 
-        /* hero section with speed & f1 identity */
+        /* hero section */
         .hero {
             display: flex;
             flex-direction: column;
@@ -254,7 +254,6 @@
             border-bottom: 1px solid #2a2e3e;
         }
 
-        /* custom image container for the onboard+teamradio card */
         .card-image-media {
             background: linear-gradient(145deg, #11141f, #080a10);
             padding: 0;
@@ -298,6 +297,132 @@
             font-weight: 600;
             border: 0.5px solid #e1060066;
             align-self: flex-start;
+        }
+
+        /* DRIVERS SECTION - GRID STYLES */
+        .drivers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .driver-card {
+            background: linear-gradient(145deg, #11141f, #0a0c14);
+            border-radius: 28px;
+            border: 1px solid rgba(225,6,0,0.25);
+            backdrop-filter: blur(3px);
+            transition: all 0.25s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .driver-card:hover {
+            transform: translateY(-6px);
+            border-color: #e10600;
+            box-shadow: 0 20px 30px -12px rgba(225,6,0,0.3);
+        }
+
+        .driver-number {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: 900;
+            opacity: 0.2;
+            color: #e10600;
+            font-family: 'Titillium Web', monospace;
+            pointer-events: none;
+        }
+
+        .driver-header {
+            padding: 1.5rem 1.5rem 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .driver-avatar {
+            width: 60px;
+            height: 60px;
+            background: #1f232f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e10600;
+            border: 2px solid #e1060055;
+        }
+
+        .driver-name h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .driver-name p {
+            font-size: 0.8rem;
+            color: #e10600;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .driver-team {
+            padding: 0.2rem 1.5rem;
+            font-size: 0.9rem;
+            color: #bbb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px dashed #2a2e3e;
+            padding-bottom: 0.8rem;
+        }
+
+        .driver-team i {
+            color: #e10600;
+            width: 20px;
+        }
+
+        .driver-stats {
+            padding: 1rem 1.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .driver-stats span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .driver-stats i {
+            font-size: 1rem;
+            color: #e10600;
+        }
+
+        .btn-driver {
+            margin: 0 1.5rem 1.5rem;
+            background: transparent;
+            border: 1px solid #e1060066;
+            padding: 0.5rem;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #e10600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-driver:hover {
+            background: #e10600;
+            color: white;
+            border-color: #e10600;
         }
 
         /* Grand Prix schedule */
@@ -358,7 +483,6 @@
             background: #e10600;
         }
 
-        /* Anywhere access banner */
         .anywhere-banner {
             background: linear-gradient(115deg, #0f0f1c, #080a12);
             border-radius: 2rem;
@@ -386,7 +510,6 @@
             color: #ccc;
         }
 
-        /* footer */
         .footer {
             background: #03050a;
             padding: 2.5rem 2rem;
@@ -413,7 +536,6 @@
             color: #e10600;
         }
 
-        /* responsive */
         @media (max-width: 800px) {
             .header {
                 flex-direction: column;
@@ -430,8 +552,8 @@
                 align-items: flex-start;
                 gap: 12px;
             }
-            .gp-flag {
-                width: auto;
+            .driver-header {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -446,7 +568,7 @@
         </div>
         <div class="nav-links">
             <a href="#">RACING</a>
-            <a href="#">DRIVERS</a>
+            <a href="#" id="driversNavLink" style="color:#e10600;">DRIVERS</a>
             <a href="#">TEAMS</a>
             <a href="#" class="btn-outline">TV SCHEDULE</a>
         </div>
@@ -462,7 +584,7 @@
         </div>
     </section>
 
-    <!-- F1 TV section - watch Grand Prixs anytime anywhere -->
+    <!-- F1 TV section -->
     <div class="section" id="tvSection">
         <div class="container">
             <div class="section-title">
@@ -477,10 +599,8 @@
                     <span class="watch-badge"><i class="fas fa-clock"></i> 24/7 access</span>
                 </div>
                 
-                <!-- MODIFIED CARD: added download(12).jpg image on top of Onboard & Team Radio section -->
                 <div class="tv-card">
                     <div class="card-image-media">
-                        <!-- local image file: download(12).jpg placed above the onboard & team radio content -->
                         <img src="download(12).jpg" alt="F1 onboard cockpit view" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a1e2c/e10600?text=F1+Onboard+View';">
                     </div>
                     <h3>Onboard & Team Radio</h3>
@@ -498,15 +618,26 @@
         </div>
     </div>
 
+    <!-- NEW DRIVERS SECTION -->
+    <div class="section" id="driversSection">
+        <div class="container">
+            <div class="section-title">
+                <i class="fas fa-helmet-safety" style="color:#e10600; margin-right: 12px;"></i> 2026 DRIVER LINE-UP 
+                <span style="font-size: 0.9rem; font-weight: normal; color:#aaa;"> — 20 champions on the grid</span>
+            </div>
+            <div class="drivers-grid" id="driversGridContainer">
+                <!-- Dynamic drivers injected via JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Upcoming Grand Prix schedule section -->
     <div class="section" style="padding-top: 0;">
         <div class="container">
             <div class="section-title">
                 <i class="fas fa-flag-checkered" style="color:#e10600;"></i> 2026 GRAND PRIX CALENDAR
             </div>
-            <div class="gp-list" id="gpListContainer">
-                <!-- dynamic grand prix via JS but also static fallback but dynamic will populate -->
-            </div>
+            <div class="gp-list" id="gpListContainer"></div>
             <div class="anywhere-banner">
                 <i class="fas fa-tv"></i>
                 <h2>Watch Grand Prixs <span style="color:#e10600;">Anytime Anywhere</span></h2>
@@ -516,7 +647,7 @@
         </div>
     </div>
 
-    <!-- additional info: F1 official streaming -->
+    <!-- extra features section -->
     <div class="section" style="padding-top: 0;">
         <div class="container">
             <div class="tv-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px,1fr));">
@@ -552,7 +683,70 @@
 </div>
 
 <script>
-    // Grand Prix schedule data (iconic 2026 season indicative)
+    // Complete 2026 F1 Drivers list (20 drivers with teams & numbers)
+    const f1Drivers = [
+        { name: "Max Verstappen", team: "Oracle Red Bull Racing", number: 1, country: "🇳🇱", podiums: 106, wins: 56, flag: "🇳🇱" },
+        { name: "Sergio Pérez", team: "Oracle Red Bull Racing", number: 11, country: "🇲🇽", podiums: 39, wins: 6, flag: "🇲🇽" },
+        { name: "Lewis Hamilton", team: "Scuderia Ferrari", number: 44, country: "🇬🇧", podiums: 197, wins: 103, flag: "🇬🇧" },
+        { name: "Charles Leclerc", team: "Scuderia Ferrari", number: 16, country: "🇲🇨", podiums: 30, wins: 5, flag: "🇲🇨" },
+        { name: "Lando Norris", team: "McLaren Formula 1 Team", number: 4, country: "🇬🇧", podiums: 19, wins: 1, flag: "🇬🇧" },
+        { name: "Oscar Piastri", team: "McLaren Formula 1 Team", number: 81, country: "🇦🇺", podiums: 8, wins: 0, flag: "🇦🇺" },
+        { name: "George Russell", team: "Mercedes-AMG PETRONAS", number: 63, country: "🇬🇧", podiums: 11, wins: 1, flag: "🇬🇧" },
+        { name: "Kimi Antonelli", team: "Mercedes-AMG PETRONAS", number: 12, country: "🇮🇹", podiums: 0, wins: 0, flag: "🇮🇹" },
+        { name: "Fernando Alonso", team: "Aston Martin Aramco", number: 14, country: "🇪🇸", podiums: 106, wins: 32, flag: "🇪🇸" },
+        { name: "Lance Stroll", team: "Aston Martin Aramco", number: 18, country: "🇨🇦", podiums: 3, wins: 0, flag: "🇨🇦" },
+        { name: "Pierre Gasly", team: "Alpine F1 Team", number: 10, country: "🇫🇷", podiums: 4, wins: 1, flag: "🇫🇷" },
+        { name: "Esteban Ocon", team: "Alpine F1 Team", number: 31, country: "🇫🇷", podiums: 4, wins: 1, flag: "🇫🇷" },
+        { name: "Nico Hülkenberg", team: "Stake F1 Team Kick Sauber", number: 27, country: "🇩🇪", podiums: 0, wins: 0, flag: "🇩🇪" },
+        { name: "Valtteri Bottas", team: "Stake F1 Team Kick Sauber", number: 77, country: "🇫🇮", podiums: 67, wins: 10, flag: "🇫🇮" },
+        { name: "Yuki Tsunoda", team: "Visa Cash App RB", number: 22, country: "🇯🇵", podiums: 0, wins: 0, flag: "🇯🇵" },
+        { name: "Daniel Ricciardo", team: "Visa Cash App RB", number: 3, country: "🇦🇺", podiums: 32, wins: 8, flag: "🇦🇺" },
+        { name: "Alexander Albon", team: "Williams Racing", number: 23, country: "🇹🇭", podiums: 2, wins: 0, flag: "🇹🇭" },
+        { name: "Logan Sargeant", team: "Williams Racing", number: 2, country: "🇺🇸", podiums: 0, wins: 0, flag: "🇺🇸" },
+        { name: "Kevin Magnussen", team: "Haas F1 Team", number: 20, country: "🇩🇰", podiums: 1, wins: 0, flag: "🇩🇰" },
+        { name: "Oliver Bearman", team: "Haas F1 Team", number: 50, country: "🇬🇧", podiums: 0, wins: 0, flag: "🇬🇧" }
+    ];
+
+    function renderDrivers() {
+        const container = document.getElementById('driversGridContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        f1Drivers.forEach(driver => {
+            const driverCard = document.createElement('div');
+            driverCard.className = 'driver-card';
+            driverCard.innerHTML = `
+                <div class="driver-number">#${driver.number}</div>
+                <div class="driver-header">
+                    <div class="driver-avatar">${driver.flag}</div>
+                    <div class="driver-name">
+                        <h3>${driver.name}</h3>
+                        <p>${driver.team}</p>
+                    </div>
+                </div>
+                <div class="driver-team">
+                    <i class="fas fa-flag-checkered"></i> <span>${driver.country}</span>
+                </div>
+                <div class="driver-stats">
+                    <span><i class="fas fa-trophy"></i> ${driver.wins} Wins</span>
+                    <span><i class="fas fa-podium"></i> ${driver.podiums} Podiums</span>
+                    <span><i class="fas fa-hashtag"></i> ${driver.number}</span>
+                </div>
+                <div class="btn-driver driver-action" data-name="${driver.name}"><i class="fas fa-video"></i> WATCH ONBOARD</div>
+            `;
+            container.appendChild(driverCard);
+        });
+
+        // attach interactive events to each driver card button
+        document.querySelectorAll('.driver-action').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const driverName = btn.getAttribute('data-name');
+                alert(`🎥 F1 TV Pro: Experience ${driverName}'s onboard camera and live team radio! Subscribe to watch every driver's perspective anytime, anywhere.`);
+                e.stopPropagation();
+            });
+        });
+    }
+
+    // Grand Prix schedule data (2026 season)
     const grandPrixData = [
         { flag: "🇦🇺", name: "Australian Grand Prix", location: "Melbourne", date: "March 15-17", watchLink: "#" },
         { flag: "🇨🇳", name: "Chinese Grand Prix", location: "Shanghai", date: "March 29-31", watchLink: "#" },
@@ -587,8 +781,6 @@
             `;
             container.appendChild(gpItem);
         });
-
-        // attach event listeners to all watch buttons
         document.querySelectorAll('.watch-gp-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const gpName = btn.getAttribute('data-gp') || 'Grand Prix';
@@ -597,60 +789,27 @@
         });
     }
 
-    // handle hero & cta buttons to simulate watch action
     function initInteractions() {
         const watchNowHero = document.getElementById('watchNowHeroBtn');
         const exploreTv = document.getElementById('exploreTvBtn');
         const subscribeBtn = document.getElementById('subscribeBtn');
+        const driversNavLink = document.getElementById('driversNavLink');
 
-        if (watchNowHero) {
-            watchNowHero.addEventListener('click', () => {
-                alert("🏁 F1 TV Pro: Stream the next Grand Prix live! Subscribe to watch every session on any device. Relive classic races.");
-            });
-        }
-        if (exploreTv) {
-            exploreTv.addEventListener('click', () => {
-                const tvSection = document.getElementById('tvSection');
-                if (tvSection) {
-                    tvSection.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    alert("Explore F1 TV packages: Live timing, onboard cameras, full replays and more!");
-                }
-            });
-        }
-        if (subscribeBtn) {
-            subscribeBtn.addEventListener('click', () => {
-                alert("✅ Start watching Formula 1 anywhere, anytime. Choose monthly or annual plan. Unlimited access to every Grand Prix.");
-            });
-        }
-        // additional for any direct "watch" on gp cards handled by dynamic render
+        if (watchNowHero) watchNowHero.addEventListener('click', () => alert("🏁 F1 TV Pro: Stream the next Grand Prix live! Subscribe to watch every session."));
+        if (exploreTv) exploreTv.addEventListener('click', () => { document.getElementById('tvSection')?.scrollIntoView({ behavior: 'smooth' }); });
+        if (subscribeBtn) subscribeBtn.addEventListener('click', () => alert("✅ Start watching Formula 1 anywhere, anytime. Unlimited access to every Grand Prix."));
+        if (driversNavLink) driversNavLink.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('driversSection')?.scrollIntoView({ behavior: 'smooth' }); });
     }
 
-    // plus any other interactive messages
     document.addEventListener('DOMContentLoaded', () => {
+        renderDrivers();
         renderGPList();
         initInteractions();
-
-        // Add extra style for smooth hover and notification on TV cards as demo
-        const tvCards = document.querySelectorAll('.tv-card');
-        tvCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                if(e.target.tagName === 'BUTTON' || e.target.closest('.watch-badge')) return;
-                alert("🎥 F1 TV: All Grand Prixs available — anytime, anywhere. Subscribe to unlock the full racing experience.");
-            });
-        });
-        
-        // Image fallback: if download(12).jpg fails to load, show a nice gradient overlay message but the onerror already handles placeholder
         const onboardImage = document.querySelector('.card-image-media img');
         if (onboardImage && onboardImage.complete && onboardImage.naturalWidth === 0) {
-            // additional check: in case the onerror didn't trigger properly due to late load
-            onboardImage.onerror = function() {
-                this.onerror = null;
-                this.src = 'https://placehold.co/600x400/1a1e2c/e10600?text=F1+Onboard+Perspective';
-            };
+            onboardImage.onerror = function() { this.src = 'https://placehold.co/600x400/1a1e2c/e10600?text=F1+Onboard+Perspective'; };
         }
-        
-        console.log("Formula 1 | The official home of racing — watch Grand Prixs anytime anywhere");
+        console.log("F1 Drivers section loaded — all 20 drivers ready.");
     });
 </script>
 </body>
