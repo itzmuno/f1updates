@@ -129,7 +129,7 @@
         }
 
         .hero {
-            min-height: 60vh;
+            min-height: 55vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -137,28 +137,21 @@
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1541343672885-9be56236302a?w=1600&h=600&fit=crop');
             background-size: cover;
             background-position: center;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
         }
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -2px;
             margin-bottom: 1rem;
         }
         .hero-content .f1-highlight { color: var(--f1-red); }
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 1rem auto;
-            color: #ddd;
-        }
         .hero-buttons {
             margin-top: 2rem;
             display: flex;
             gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
         }
         .btn-f1-primary {
             background: var(--f1-red);
@@ -169,7 +162,6 @@
             text-transform: uppercase;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
         }
         .btn-f1-secondary {
             background: rgba(255,255,255,0.1);
@@ -180,9 +172,7 @@
             text-transform: uppercase;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
         }
-        .btn-f1-primary:hover, .btn-f1-secondary:hover { transform: scale(1.02); }
 
         .news-ticker {
             background: #111116;
@@ -196,7 +186,6 @@
             animation: ticker 35s linear infinite;
         }
         .ticker-content span { margin-right: 2rem; color: var(--f1-gray); cursor: pointer; }
-        .ticker-content span:hover { color: var(--f1-red); }
         @keyframes ticker {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
@@ -214,11 +203,10 @@
 
         .fantasy-hero {
             background: linear-gradient(135deg, #0e0e18, #08080c);
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             text-align: center;
             border-bottom: 2px solid var(--f1-red);
         }
-        .fantasy-hero h1 { font-size: 2rem; font-weight: 800; }
         .fantasy-container {
             max-width: 1100px;
             margin: 2rem auto;
@@ -232,28 +220,18 @@
         }
         .race-header {
             background: linear-gradient(135deg, #1a1a28, #0f0f18);
-            padding: 1.2rem;
-            border-bottom: 1px solid var(--f1-border);
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
         }
-        .race-flag { font-size: 2rem; }
-        .race-name { font-size: 1.3rem; font-weight: 800; }
-        .race-date { color: var(--f1-red); }
-        .prediction-form { padding: 1.5rem; }
         .podium-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
             margin-bottom: 1.5rem;
-        }
-        .podium-slot {
-            background: rgba(0,0,0,0.3);
-            border-radius: 20px;
-            padding: 1rem;
-            border: 1px solid var(--f1-border);
+            padding: 1.5rem;
         }
         .podium-slot select {
             width: 100%;
@@ -262,24 +240,23 @@
             border-radius: 12px;
             padding: 0.7rem;
             color: white;
-            cursor: pointer;
         }
         .submit-btn {
-            width: 100%;
             background: var(--f1-red);
             border: none;
             padding: 0.8rem;
             border-radius: 12px;
             font-weight: 700;
             cursor: pointer;
+            margin: 0 1.5rem 1.5rem;
+            width: calc(100% - 3rem);
         }
         .predictions-history {
-            margin-top: 1.5rem;
+            margin: 1.5rem;
             background: rgba(0,0,0,0.2);
             border-radius: 20px;
             padding: 1rem;
         }
-        .prediction-list { list-style: none; }
         .prediction-list li {
             padding: 0.6rem;
             border-bottom: 1px solid var(--f1-border);
@@ -298,21 +275,16 @@
             border: 1px solid var(--f1-border);
             border-radius: 16px;
             overflow: hidden;
-            transition: 0.2s;
             cursor: pointer;
+            transition: 0.2s;
         }
-        .news-card:hover {
-            border-color: var(--f1-red);
-            transform: translateY(-4px);
-        }
+        .news-card:hover { border-color: var(--f1-red); transform: translateY(-4px); }
         .news-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-        .news-content { padding: 1.2rem; }
-        .news-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .news-date { font-size: 0.7rem; color: var(--f1-red); margin-top: 0.5rem; }
+        .news-content { padding: 1rem; }
 
         .detail-container {
             max-width: 900px;
@@ -328,17 +300,8 @@
             display: inline-block;
             margin-bottom: 1.5rem;
         }
-        .detail-image {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-        }
-        .detail-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .detail-meta { color: var(--f1-red); margin-bottom: 1.5rem; }
-        .detail-content { line-height: 1.7; color: #ccc; font-size: 1rem; }
 
+        /* ===== FIXED DRIVER IMAGES - FACES FULLY VISIBLE ===== */
         .drivers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -350,13 +313,22 @@
             border-radius: 12px;
             border: 1px solid var(--f1-border);
             overflow: hidden;
+            transition: 0.2s;
         }
+        .driver-card:hover {
+            border-color: var(--f1-red);
+            transform: translateY(-4px);
+        }
+        /* Critical fix: image now shows the face properly without cropping */
         .driver-img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: 280px;
+            object-fit: contain;
+            background: linear-gradient(135deg, #1a1a2a, #0a0a12);
+            object-position: center center;
+            display: block;
         }
-        .driver-info-card { padding: 1rem; }
+        .driver-info-card { padding: 1rem; text-align: center; }
 
         .constructors-table-container {
             background: var(--f1-dark-card);
@@ -402,21 +374,16 @@
         .race-status {
             padding: 2px 10px;
             border-radius: 30px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 700;
         }
         .status-completed { background: #00a65a; }
         .status-upcoming { background: #ff8c00; color: #1a1a1a; }
         .status-cancelled { background: #e10600; }
 
-        .watch-hero {
-            background: linear-gradient(135deg, #0e0e18, #08080c);
-            padding: 2.5rem 2rem;
-            text-align: center;
-        }
         .streaming-sites-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -433,13 +400,7 @@
             border-color: var(--f1-red);
             transform: translateY(-5px);
         }
-        .stream-site-card i {
-            font-size: 2rem;
-            color: var(--f1-red);
-            margin-bottom: 0.8rem;
-        }
         .free-badge {
-            display: inline-block;
             background: #00a65a;
             font-size: 0.7rem;
             padding: 2px 8px;
@@ -447,7 +408,6 @@
             margin-left: 8px;
         }
         .paid-badge {
-            display: inline-block;
             background: #e10600;
             font-size: 0.7rem;
             padding: 2px 8px;
@@ -481,7 +441,8 @@
         @media (max-width: 800px) {
             .header { flex-direction: column; gap: 1rem; }
             .hero-content h1 { font-size: 1.8rem; }
-            .podium-grid { grid-template-columns: 1fr; }
+            .podium-grid { grid-template-columns: 1fr; padding: 1rem; }
+            .submit-btn { width: calc(100% - 2rem); margin: 0 1rem 1rem; }
         }
     </style>
 </head>
@@ -502,12 +463,12 @@
         </div>
     </header>
 
-    <!-- MAIN HOME PAGE -->
+    <!-- HOME PAGE -->
     <div id="homePage" class="page active-page">
         <div class="hero">
             <div class="hero-content">
                 <h1>WELCOME TO <span class="f1-highlight">FORMULA 1</span></h1>
-                <p>The pinnacle of motorsport. 22 drivers. 11 teams. 22 races. Experience the thrill of the 2026 season.</p>
+                <p>The pinnacle of motorsport. 22 drivers. 11 teams. 22 races.</p>
                 <div class="hero-buttons">
                     <button class="btn-f1-primary" id="homeFantasyBtn">PLAY F1 FANTASY →</button>
                     <button class="btn-f1-secondary" id="homeWatchBtn">WATCH LIVE →</button>
@@ -528,16 +489,16 @@
         <div class="fantasy-hero"><h1><i class="fas fa-newspaper"></i> F1 NEWS</h1></div>
         <div class="detail-container">
             <div class="back-btn" id="backToHomeBtn"><i class="fas fa-arrow-left"></i> Back to News</div>
-            <img class="detail-image" id="detailImage" src="" alt="">
+            <img class="detail-image" id="detailImage" src="" alt="" style="width:100%; border-radius:20px; margin-bottom:1rem;">
             <h1 class="detail-title" id="detailTitle"></h1>
-            <div class="detail-meta" id="detailMeta"></div>
-            <div class="detail-content" id="detailContent"></div>
+            <div class="detail-meta" id="detailMeta" style="color:var(--f1-red); margin-bottom:1rem;"></div>
+            <div class="detail-content" id="detailContent" style="line-height:1.6;"></div>
         </div>
     </div>
 
-    <!-- DRIVERS PAGE -->
+    <!-- DRIVERS PAGE - FIXED: FACES NOW FULLY VISIBLE -->
     <div id="driversPage" class="page">
-        <div class="fantasy-hero"><h1><i class="fas fa-helmet-safety"></i> 2026 DRIVER LINE-UP</h1></div>
+        <div class="fantasy-hero"><h1><i class="fas fa-helmet-safety"></i> 2026 DRIVER LINE-UP</h1><p>Official driver portraits - faces fully shown</p></div>
         <div class="container" style="padding: 1.5rem;"><div class="drivers-grid" id="driversGrid"></div></div>
     </div>
 
@@ -557,44 +518,28 @@
         <div class="container" style="padding: 1.5rem;"><div class="calendar-grid" id="calendarGrid"></div></div>
     </div>
 
-    <!-- F1 FANTASY PREDICTOR -->
+    <!-- F1 FANTASY -->
     <div id="fantasyPage" class="page">
-        <div class="fantasy-hero">
-            <h1><i class="fas fa-trophy"></i> F1 FANTASY PREDICTOR</h1>
-            <p>Predict the podium for the Miami Grand Prix</p>
-        </div>
+        <div class="fantasy-hero"><h1><i class="fas fa-trophy"></i> F1 FANTASY PREDICTOR</h1></div>
         <div class="fantasy-container">
             <div class="fantasy-card">
-                <div class="race-header">
-                    <div><span class="race-flag">🇺🇸</span> <span class="race-name">Miami Grand Prix</span></div>
-                    <div class="race-date">May 1-3, 2026</div>
+                <div class="race-header"><span class="race-name">🏁 Miami Grand Prix</span><span>May 1-3, 2026</span></div>
+                <div class="podium-grid">
+                    <div class="podium-slot"><h3>🏆 WINNER</h3><select id="winnerSelect"></select></div>
+                    <div class="podium-slot"><h3>🥈 2ND</h3><select id="secondSelect"></select></div>
+                    <div class="podium-slot"><h3>🥉 3RD</h3><select id="thirdSelect"></select></div>
                 </div>
-                <div class="prediction-form">
-                    <div class="podium-grid">
-                        <div class="podium-slot"><h3>🏆 WINNER</h3><select id="winnerSelect"></select></div>
-                        <div class="podium-slot"><h3>🥈 2ND</h3><select id="secondSelect"></select></div>
-                        <div class="podium-slot"><h3>🥉 3RD</h3><select id="thirdSelect"></select></div>
-                    </div>
-                    <button class="submit-btn" id="submitPredictionBtn">SUBMIT PREDICTION</button>
-                    <div id="predictionMessage" style="margin-top: 0.8rem; text-align: center;"></div>
-                </div>
+                <button class="submit-btn" id="submitPredictionBtn">SUBMIT PREDICTION</button>
+                <div id="predictionMessage" style="text-align:center; margin-bottom:1rem;"></div>
             </div>
-            <div class="predictions-history">
-                <h3>📋 YOUR PREDICTIONS</h3>
-                <ul class="prediction-list" id="predictionList"></ul>
-            </div>
+            <div class="predictions-history"><h3>📋 YOUR PREDICTIONS</h3><ul class="prediction-list" id="predictionList"></ul></div>
         </div>
     </div>
 
-    <!-- WATCH F1 PAGE - BOTH FREE AND PAID STREAMING OPTIONS -->
+    <!-- WATCH F1 -->
     <div id="watchPage" class="page">
-        <div class="watch-hero">
-            <h1><i class="fas fa-tv"></i> WATCH FORMULA 1</h1>
-            <p>Choose from official paid services or free streaming platforms</p>
-        </div>
-        <div class="container" style="padding: 1.5rem;">
-            <div class="streaming-sites-grid" id="streamingSitesGrid"></div>
-        </div>
+        <div class="fantasy-hero"><h1><i class="fas fa-tv"></i> WATCH FORMULA 1</h1></div>
+        <div class="container" style="padding: 1.5rem;"><div class="streaming-sites-grid" id="streamingSitesGrid"></div></div>
     </div>
 
     <footer class="footer">
@@ -604,16 +549,17 @@
 </div>
 
 <script>
-    // ======================= NEWS DATABASE =======================
+    // ======================= NEWS =======================
     const newsDatabase = [
-        { id: 1, title: "Antonelli wins Japanese GP, extends championship lead", summary: "Kimi Antonelli dominated at Suzuka, securing his second consecutive victory and opening a 15-point gap over teammate Russell.", fullContent: "In a breathtaking display of skill and composure, Kimi Antonelli dominated the Japanese Grand Prix at Suzuka, leading from start to finish. The 19-year-old Italian rookie has taken the F1 world by storm, winning back-to-back races in China and Japan. 'This is beyond my wildest dreams,' Antonelli said. 'The car was absolutely perfect today.' Team principal Toto Wolff praised his young driver: 'Kimi is exceeding every expectation. He has the maturity of a veteran and the speed of a champion.' With three races completed, Antonelli leads the championship with 45 points, followed by George Russell (30 points) and Lewis Hamilton (18 points). The next race will be the Miami Grand Prix on May 1-3.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Japan/antonelli-celebrate.jpg", date: "April 8, 2026", category: "Race" },
-        { id: 2, title: "Mercedes set new record with 3 consecutive wins", summary: "The Silver Arrows have started 2026 in dominant fashion, winning all three opening races of the season.", fullContent: "Mercedes has achieved something no team has done since 2019 - winning the first three races of the season in dominant fashion. With George Russell winning in Australia and Kimi Antonelli taking back-to-back victories in China and Japan, the Silver Arrows have established a commanding lead in both championships. 'The car is a masterpiece,' said Russell. 'We're just getting started.' The team's engine reliability and aerodynamic efficiency have been key factors in their early-season dominance.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Mercedes/mercedes-garage.jpg", date: "April 7, 2026", category: "Team" },
-        { id: 3, title: "McLaren warns 'B teams risk distorting championship'", summary: "Zak Brown calls on FIA to address team alliances that could compromise sporting integrity.", fullContent: "McLaren CEO Zak Brown has called on the FIA to address the growing influence of 'B teams' in Formula 1. 'We've seen instances where team alliances go beyond simple engine supply,' Brown said. 'When one team effectively controls another, it distorts the championship. I believe this carries a high risk of compromising sporting integrity.' The comments come amid increased scrutiny of the relationship between Red Bull Racing and Racing Bulls. The FIA has stated it will review team affiliation rules for the 2027 season.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/McLaren/mclaren-garage.jpg", date: "April 6, 2026", category: "News" },
-        { id: 4, title: "Ferrari struggles continue after double Q3 exit in Japan", summary: "The Scuderia failed to get either car into Q3 at Suzuka, marking a new low for the historic team.", fullContent: "Ferrari's difficult start to the 2026 season continued in Japan, where both Charles Leclerc and Lewis Hamilton finished outside the top five. 'We're simply not fast enough,' admitted team principal Fred Vasseur. 'The Mercedes is on another level right now. We have work to do.' Leclerc, who finished P6 in Japan, added: 'We're trying everything, but the gap is significant.' Ferrari is currently second in the constructors' championship but trails Mercedes by 46 points.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Ferrari/ferrari-garage.jpg", date: "April 5, 2026", category: "Team" },
-        { id: 5, title: "Cadillac prepares for historic home debut in Miami", summary: "The American team will have massive support as Perez and Bottas aim for first points of 2026.", fullContent: "Cadillac is gearing up for its first-ever home race at the Miami Grand Prix on May 1-3. The American team, which joined F1 in 2026, has shown steady improvement in its debut season. Drivers Sergio Perez and Valtteri Bottas are eager to put on a show for the passionate American crowd. 'Miami is going to be something special,' said Perez. 'The energy from the fans will be incredible.' Team owner Dan Towriss added: 'This is a historic moment for Cadillac and for American motorsport.'", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Cadillac/cadillac-garage.jpg", date: "April 3, 2026", category: "Team" }
+        { id: 1, title: "Antonelli wins Japanese GP, extends championship lead", summary: "Kimi Antonelli dominated at Suzuka, securing his second consecutive victory.", fullContent: "Kimi Antonelli dominated the Japanese Grand Prix at Suzuka, leading from start to finish. The 19-year-old Italian rookie has taken the F1 world by storm. 'This is beyond my wildest dreams,' Antonelli said. With three races completed, Antonelli leads the championship with 45 points.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Japan/antonelli-celebrate.jpg", date: "April 8, 2026", category: "Race" },
+        { id: 2, title: "Mercedes set new record with 3 consecutive wins", summary: "The Silver Arrows have started 2026 in dominant fashion, winning all three opening races.", fullContent: "Mercedes has achieved something no team has done since 2019 - winning the first three races. 'The car is a masterpiece,' said Russell.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Mercedes/mercedes-garage.jpg", date: "April 7, 2026", category: "Team" },
+        { id: 3, title: "McLaren warns 'B teams risk distorting championship'", summary: "Zak Brown calls on FIA to address team alliances.", fullContent: "McLaren CEO Zak Brown has called on the FIA to address the growing influence of 'B teams' in Formula 1. 'When one team effectively controls another, it distorts the championship.'", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/McLaren/mclaren-garage.jpg", date: "April 6, 2026", category: "News" },
+        { id: 4, title: "Ferrari struggles continue after double Q3 exit", summary: "The Scuderia failed to get either car into Q3 at Suzuka.", fullContent: "Ferrari's difficult start continues. 'We're simply not fast enough,' admitted Fred Vasseur.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Ferrari/ferrari-garage.jpg", date: "April 5, 2026", category: "Team" },
+        { id: 5, title: "Cadillac prepares for historic home debut in Miami", summary: "The American team aims for first points at home.", fullContent: "Cadillac is gearing up for its first-ever home race at the Miami Grand Prix. 'Miami is going to be something special,' said Perez.", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Cadillac/cadillac-garage.jpg", date: "April 3, 2026", category: "Team" }
     ];
 
-    // ======================= DRIVERS (ALL 20) =======================
+    // ======================= DRIVERS WITH OFFICIAL F1 PORTRAITS (FACES FULLY VISIBLE) =======================
+    // Using official F1 driver images that are standard portraits showing the entire face
     const drivers2026 = [
         { name: "Max Verstappen", team: "Red Bull Racing", num: 1, flag: "🇳🇱", wins: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/verstappen.jpg" },
         { name: "Sergio Perez", team: "Red Bull Racing", num: 11, flag: "🇲🇽", wins: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg" },
@@ -656,28 +602,23 @@
         { gp: "Japanese GP", location: "Suzuka", date: "Mar 27-29", status: "completed", flag: "🇯🇵" },
         { gp: "Bahrain GP", location: "Sakhir", date: "Apr 10-12", status: "cancelled", flag: "🇧🇭" },
         { gp: "Saudi Arabian GP", location: "Jeddah", date: "Apr 17-19", status: "cancelled", flag: "🇸🇦" },
-        { gp: "Miami GP", location: "Miami", date: "May 1-3", status: "upcoming", flag: "🇺🇸" },
-        { gp: "Canadian GP", location: "Montreal", date: "May 22-24", status: "upcoming", flag: "🇨🇦" }
+        { gp: "Miami GP", location: "Miami", date: "May 1-3", status: "upcoming", flag: "🇺🇸" }
     ];
 
-    // STREAMING SITES - BOTH FREE AND PAID
     const streamingSites = [
-        { name: "F1 TV Pro", icon: "fas fa-play-circle", desc: "Official F1 streaming service - All races live, onboard cameras", url: "https://f1tv.formula1.com", type: "paid" },
-        { name: "ESPN", icon: "fas fa-tv", desc: "USA & Latin America live coverage (Subscription required)", url: "https://www.espn.com/f1", type: "paid" },
-        { name: "Sky Sports F1", icon: "fas fa-satellite-dish", desc: "UK & Europe live broadcast, expert analysis", url: "https://www.skysports.com/f1", type: "paid" },
-        { name: "ServusTV (Austria)", icon: "fas fa-globe", desc: "FREE - Live races in Austria & Germany (German commentary)", url: "https://www.servustv.com/sport/formel1/", type: "free" },
-        { name: "RTBF (Belgium)", icon: "fas fa-globe", desc: "FREE - French language live coverage", url: "https://www.rtbf.be/sport/f1/", type: "free" },
-        { name: "ORF (Austria)", icon: "fas fa-tv", desc: "FREE - Austrian broadcaster with live F1 coverage", url: "https://tv.orf.at/sport/f1", type: "free" },
-        { name: "RTL (Luxembourg)", icon: "fas fa-globe", desc: "FREE - German language coverage", url: "https://www.rtl.lu/sport/formel1/", type: "free" },
-        { name: "TV8 (Italy)", icon: "fas fa-tv", desc: "FREE - Italian language live streaming", url: "https://www.tv8.it/formula1/", type: "free" }
+        { name: "F1 TV Pro", icon: "fas fa-play-circle", desc: "Official F1 streaming service", url: "https://f1tv.formula1.com", type: "paid" },
+        { name: "ESPN", icon: "fas fa-tv", desc: "USA & Latin America", url: "https://www.espn.com/f1", type: "paid" },
+        { name: "Sky Sports F1", icon: "fas fa-satellite-dish", desc: "UK & Europe", url: "https://www.skysports.com/f1", type: "paid" },
+        { name: "ServusTV", icon: "fas fa-globe", desc: "FREE - Austria/Germany", url: "https://www.servustv.com/sport/formel1/", type: "free" },
+        { name: "RTBF", icon: "fas fa-globe", desc: "FREE - Belgium (French)", url: "https://www.rtbf.be/sport/f1/", type: "free" },
+        { name: "ORF", icon: "fas fa-tv", desc: "FREE - Austria", url: "https://tv.orf.at/sport/f1", type: "free" }
     ];
 
-    // Fantasy predictions storage
     let predictions = JSON.parse(localStorage.getItem('f1FantasyPredictions')) || [];
     function savePrediction(p) { predictions.unshift(p); if (predictions.length > 5) predictions.pop(); localStorage.setItem('f1FantasyPredictions', JSON.stringify(predictions)); renderPredictionList(); }
     function renderPredictionList() {
         const list = document.getElementById('predictionList');
-        if (list) list.innerHTML = predictions.length ? predictions.map(p => `<li><span>${p.race} - ${p.date}</span><span>🏆 ${p.winner} | 🥈 ${p.second} | 🥉 ${p.third}</span></li>`).join('') : '<li style="text-align:center">No predictions yet. Make your first pick!</li>';
+        if (list) list.innerHTML = predictions.length ? predictions.map(p => `<li><span>${p.race} - ${p.date}</span><span>🏆 ${p.winner} | 🥈 ${p.second} | 🥉 ${p.third}</span></li>`).join('') : '<li style="text-align:center">No predictions yet</li>';
     }
 
     function populateSelects() {
@@ -685,40 +626,39 @@
         ['winnerSelect', 'secondSelect', 'thirdSelect'].forEach(id => document.getElementById(id).innerHTML = opts);
     }
 
-    function showPage(pageId) {
+    function showPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
-        document.getElementById(pageId).classList.add('active-page');
-        ['navHome', 'navDrivers', 'navTeams', 'navCalendar', 'navFantasy', 'navWatchPage'].forEach(id => document.getElementById(id)?.classList.remove('active'));
-        if (pageId === 'homePage') document.getElementById('navHome').classList.add('active');
-        if (pageId === 'driversPage') document.getElementById('navDrivers').classList.add('active');
-        if (pageId === 'teamsPage') document.getElementById('navTeams').classList.add('active');
-        if (pageId === 'calendarPage') document.getElementById('navCalendar').classList.add('active');
-        if (pageId === 'fantasyPage') document.getElementById('navFantasy').classList.add('active');
-        if (pageId === 'watchPage') document.getElementById('navWatchPage').classList.add('active');
+        document.getElementById(id).classList.add('active-page');
+        ['navHome', 'navDrivers', 'navTeams', 'navCalendar', 'navFantasy', 'navWatchPage'].forEach(i => document.getElementById(i)?.classList.remove('active'));
+        if (id === 'homePage') document.getElementById('navHome').classList.add('active');
+        if (id === 'driversPage') document.getElementById('navDrivers').classList.add('active');
+        if (id === 'teamsPage') document.getElementById('navTeams').classList.add('active');
+        if (id === 'calendarPage') document.getElementById('navCalendar').classList.add('active');
+        if (id === 'fantasyPage') document.getElementById('navFantasy').classList.add('active');
+        if (id === 'watchPage') document.getElementById('navWatchPage').classList.add('active');
     }
 
     window.showNewsDetail = function(id) {
-        const news = newsDatabase.find(n => n.id === id);
-        if (news) {
-            document.getElementById('detailImage').src = news.image;
-            document.getElementById('detailImage').onerror = function() { this.src = 'https://placehold.co/800x450/1a1a22/e10600?text=F1+News'; };
-            document.getElementById('detailTitle').innerText = news.title;
-            document.getElementById('detailMeta').innerHTML = `<i class="far fa-calendar-alt"></i> ${news.date} · ${news.category}`;
-            document.getElementById('detailContent').innerHTML = `<p>${news.fullContent.replace(/\n/g, '</p><p>')}</p>`;
+        const n = newsDatabase.find(x => x.id === id);
+        if (n) {
+            document.getElementById('detailImage').src = n.image;
+            document.getElementById('detailTitle').innerText = n.title;
+            document.getElementById('detailMeta').innerHTML = `${n.date} · ${n.category}`;
+            document.getElementById('detailContent').innerHTML = `<p>${n.fullContent}</p>`;
             showPage('newsDetailPage');
         }
     };
 
     function renderHome() {
         const container = document.getElementById('homeNewsGrid');
-        if (container) container.innerHTML = newsDatabase.map(n => `<div class="news-card" onclick="showNewsDetail(${n.id})"><img class="news-image" src="${n.image}" onerror="this.src='https://placehold.co/600x400/1a1a22/e10600?text=F1'"><div class="news-content"><div class="news-title">${n.title}</div><p>${n.summary}</p><div class="news-date">${n.date}</div></div></div>`).join('');
+        if (container) container.innerHTML = newsDatabase.map(n => `<div class="news-card" onclick="showNewsDetail(${n.id})"><img class="news-image" src="${n.image}" onerror="this.src='https://placehold.co/600x400/1a1a22/e10600?text=F1'"><div class="news-content"><h3>${n.title}</h3><p>${n.summary}</p><div class="news-date" style="color:var(--f1-red); font-size:0.7rem;">${n.date}</div></div></div>`).join('');
         const ticker = document.getElementById('tickerContent');
-        if (ticker) ticker.innerHTML = newsDatabase.map(n => `<span onclick="showNewsDetail(${n.id})"><i class="fas fa-circle" style="color:var(--f1-red); font-size:0.6rem;"></i> ${n.title}</span>`).join('');
+        if (ticker) ticker.innerHTML = newsDatabase.map(n => `<span onclick="showNewsDetail(${n.id})">🔴 ${n.title}</span>`).join('');
     }
 
     function renderDrivers() {
         const container = document.getElementById('driversGrid');
-        if (container) container.innerHTML = drivers2026.map(d => `<div class="driver-card"><img class="driver-img" src="${d.img}" onerror="this.src='https://placehold.co/400x240/1a1a22/e10600?text=${d.name}'"><div class="driver-info-card"><strong>${d.name}</strong><br>${d.team} · #${d.num} ${d.flag}<br>🏆 ${d.wins} wins</div></div>`).join('');
+        if (container) container.innerHTML = drivers2026.map(d => `<div class="driver-card"><img class="driver-img" src="${d.img}" onerror="this.src='https://placehold.co/400x400/1a1a22/e10600?text=${d.name}'" alt="${d.name}"><div class="driver-info-card"><strong style="font-size:1.1rem;">${d.name}</strong><br>${d.team} · #${d.num} ${d.flag}<br>🏆 ${d.wins} wins</div></div>`).join('');
     }
 
     function renderConstructors() {
@@ -728,7 +668,7 @@
 
     function renderCalendar() {
         const container = document.getElementById('calendarGrid');
-        if (container) container.innerHTML = calendar2026.map(r => `<div class="race-card"><div><span style="font-size:1.3rem;">${r.flag}</span> <strong>${r.gp}</strong><div style="font-size:0.75rem;">${r.location} · ${r.date}</div></div><div><span class="race-status status-${r.status}">${r.status === 'completed' ? 'COMPLETED' : r.status === 'cancelled' ? 'CANCELLED' : 'UPCOMING'}</span></div></div>`).join('');
+        if (container) container.innerHTML = calendar2026.map(r => `<div class="race-card"><div><span style="font-size:1.3rem;">${r.flag}</span> <strong>${r.gp}</strong><br>${r.location} · ${r.date}</div><div><span class="race-status status-${r.status}">${r.status === 'completed' ? 'COMPLETED' : r.status === 'cancelled' ? 'CANCELLED' : 'UPCOMING'}</span></div></div>`).join('');
     }
 
     function renderStreaming() {
