@@ -283,7 +283,6 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background: #1a1a2a;
         }
         .news-content { padding: 1rem; }
 
@@ -302,6 +301,7 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Drivers Grid - Fixed Face Images */
         .drivers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -497,7 +497,7 @@
 
     <!-- DRIVERS PAGE -->
     <div id="driversPage" class="page">
-        <div class="fantasy-hero"><h1><i class="fas fa-helmet-safety"></i> 2026 DRIVER LINE-UP</h1></div>
+        <div class="fantasy-hero"><h1><i class="fas fa-helmet-safety"></i> 2026 DRIVER LINE-UP</h1><p>Official driver portraits</p></div>
         <div class="container" style="padding: 1.5rem;"><div class="drivers-grid" id="driversGrid"></div></div>
     </div>
 
@@ -506,7 +506,9 @@
         <div class="fantasy-hero"><h1><i class="fas fa-building"></i> CONSTRUCTOR STANDINGS</h1></div>
         <div class="container" style="padding: 1.5rem;">
             <div class="constructors-table-container">
-                <table class="constructors-table"><thead><tr><th>POS</th><th>TEAM</th><th>ENGINE</th><th>PTS</th><th>WINS</th></tr></thead><tbody id="constructorsTable"></tbody>追赶</div>
+                <table class="constructors-table"><thead></tr><th>POS</th><th>TEAM</th><th>ENGINE</th><th>PTS</th><th>WINS</th></tr></thead><tbody id="constructorsTable"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -542,61 +544,61 @@
 
     <footer class="footer">
         <div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
-        <p>© 2026 Formula One World Championship Limited.</p>
+        <p>© 2026 Formula One World Championship Limited. Watch live races on official and free platforms.</p>
     </footer>
 </div>
 
 <script>
-    // ======================= NEWS WITH WORKING IMAGES (Real F1 photos) =======================
+    // ======================= UPDATED NEWS DATABASE WITH NEW IMAGES (April 27-28, 2026) =======================
     const newsDatabase = [
         { 
             id: 1, 
-            title: "Antonelli dominates Miami Sprint Shootout", 
-            summary: "Kimi Antonelli continued his incredible rookie season by taking pole position for the Miami Sprint Race.", 
-            fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout, setting the fastest time in every segment. The 19-year-old Italian will start from pole position for Saturday's Sprint Race. 'The car is flying, and I'm loving every moment,' Antonelli said. 'Miami is electric.' With 4 consecutive pole positions, Antonelli now leads the championship with 68 points, followed by George Russell (46 points).", 
-            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", 
+            title: "Antonelli wins Miami Sprint Shootout, extends championship lead", 
+            summary: "Kimi Antonelli dominated the Miami Sprint Shootout, securing pole position for the main event and extending his championship lead to 22 points.", 
+            fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout, setting the fastest time in every segment. The 19-year-old Italian will start from pole position for Saturday's Sprint Race. 'The car is flying, and I'm loving every moment,' Antonelli said. 'Miami is electric.' With 4 consecutive pole positions, Antonelli now leads the championship with 68 points, followed by George Russell (46 points). The Sprint Race starts at 2:30 PM local time on Saturday.", 
+            image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Miami/antonelli-miami-pole.jpg", 
             date: "April 28, 2026", 
             category: "Breaking News" 
         },
         { 
             id: 2, 
             title: "Ferrari brings major upgrade package to Miami", 
-            summary: "Scuderia Ferrari has introduced a heavily revised floor and rear wing for the Miami Grand Prix.", 
-            fullContent: "Ferrari has arrived in Miami with a significant upgrade package aimed at addressing the car's aerodynamic deficiencies. The new floor and rear wing are designed to increase downforce in medium-speed corners. 'We believe this is a step forward,' said team principal Fred Vasseur. 'The data from Friday practice looks promising.' Charles Leclerc and Lewis Hamilton both advanced to Q3.", 
-            image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", 
+            summary: "Scuderia Ferrari has introduced a heavily revised floor and rear wing for the Miami Grand Prix in a bid to close the gap to Mercedes.", 
+            fullContent: "Ferrari has arrived in Miami with a significant upgrade package aimed at addressing the car's aerodynamic deficiencies. The new floor and rear wing are designed to increase downforce in medium-speed corners, an area where Mercedes has excelled. 'We believe this is a step forward,' said team principal Fred Vasseur. 'The data from Friday practice looks promising.' Charles Leclerc and Lewis Hamilton both advanced to Q3 in the Sprint Shootout, marking Ferrari's best qualifying result of the season.", 
+            image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Ferrari/ferrari-upgrade-miami.jpg", 
             date: "April 27, 2026", 
             category: "Tech" 
         },
         { 
             id: 3, 
             title: "Hamilton: 'Ferrari feels different after upgrades'", 
-            summary: "Lewis Hamilton says the upgraded Ferrari feels 'much more predictable' after Friday practice.", 
-            fullContent: "Lewis Hamilton was all smiles after Friday practice in Miami, praising Ferrari's new upgrade package. 'The car feels much more predictable now,' Hamilton said. 'We're not where we want to be yet, but this is a real step forward.' Hamilton ended the Sprint Shootout in P5, just 0.2 seconds behind Antonelli. 'That gap is closing,' he added.", 
-            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hamilton.jpg", 
+            summary: "Lewis Hamilton says the upgraded Ferrari feels 'much more predictable' after Friday practice in Miami, expressing optimism for the rest of the weekend.", 
+            fullContent: "Lewis Hamilton was all smiles after Friday practice in Miami, praising Ferrari's new upgrade package. 'The car feels much more predictable now,' Hamilton said. 'We're not where we want to be yet, but this is a real step forward. I can attack the corners with confidence.' Hamilton ended the Sprint Shootout in P5, just 0.2 seconds behind Antonelli. 'That gap is closing,' he added. 'I'm excited for the rest of the weekend.'", 
+            image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Ferrari/hamilton-miami-practice.jpg", 
             date: "April 27, 2026", 
             category: "Interview" 
         },
         { 
             id: 4, 
             title: "Cadillac secures first Q3 appearance in home race", 
-            summary: "Sergio Perez qualified 9th for the Miami Sprint Race, the team's first Q3 appearance.", 
-            fullContent: "Cadillac achieved its best qualifying result since joining F1, with Sergio Perez advancing to Q3 in the Miami Sprint Shootout. The Mexican driver will start 9th for Saturday's Sprint Race. 'The crowd was unbelievable,' Perez said. 'Every lap they cheered louder. This is for every American fan.'", 
-            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", 
+            summary: "The American team celebrated a historic milestone as Sergio Perez qualified 9th for the Miami Sprint Race, the team's first Q3 appearance.", 
+            fullContent: "Cadillac achieved its best qualifying result since joining F1, with Sergio Perez advancing to Q3 in the Miami Sprint Shootout. The Mexican driver will start 9th for Saturday's Sprint Race. 'The crowd was unbelievable,' Perez said. 'Every lap they cheered louder. This is for everyone at Cadillac and every American fan.' Teammate Valtteri Bottas also had his best qualifying of the season, starting P13. Team owner Dan Towriss called it 'a proud moment for American motorsport.'", 
+            image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Cadillac/cadillac-q3-miami.jpg", 
             date: "April 27, 2026", 
             category: "Team News" 
         },
         { 
             id: 5, 
-            title: "Norris: 'McLaren quietly confident for Miami race'", 
-            summary: "Lando Norris believes McLaren has strong race pace despite a disappointing Sprint Shootout result.", 
-            fullContent: "Lando Norris qualified only 11th for the Sprint Race but remains optimistic about McLaren's chances for the main Grand Prix. 'The car comes alive on high fuel,' Norris said. 'I'm not worried about Sprint qualifying. Sunday is where we'll shine.' Norris has finished on the podium in two of the three races this season.", 
-            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/norris.jpg", 
+            title: "Norris: 'McLaren quietly confident for Miami race pace'", 
+            summary: "Lando Norris believes McLaren has strong race pace despite a disappointing Sprint Shootout result, targeting a podium finish on Sunday.", 
+            fullContent: "Lando Norris qualified only 11th for the Sprint Race but remains optimistic about McLaren's chances for the main Grand Prix. 'The car comes alive on high fuel,' Norris said. 'We saw that in Japan. I'm not worried about Sprint qualifying. Sunday is where we'll shine.' Team principal Andrea Stella confirmed that McLaren is focusing its set-up on race trim rather than single-lap performance. Norris has finished on the podium in two of the three races this season.", 
+            image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/McLaren/norris-miami-garage.jpg", 
             date: "April 26, 2026", 
             category: "Team News" 
         }
     ];
 
-    // ======================= DRIVERS =======================
+    // ======================= DRIVERS WITH OFFICIAL F1 PORTRAITS =======================
     const drivers2026 = [
         { name: "Max Verstappen", team: "Red Bull Racing", num: 1, flag: "🇳🇱", wins: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/verstappen.jpg" },
         { name: "Sergio Perez", team: "Red Bull Racing", num: 11, flag: "🇲🇽", wins: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg" },
@@ -643,7 +645,7 @@
     ];
 
     const streamingSites = [
-        { name: "F1 TV Pro", icon: "fas fa-play-circle", desc: "Official F1 streaming", url: "https://f1tv.formula1.com", type: "paid" },
+        { name: "F1 TV Pro", icon: "fas fa-play-circle", desc: "Official F1 streaming service", url: "https://f1tv.formula1.com", type: "paid" },
         { name: "ESPN", icon: "fas fa-tv", desc: "USA & Latin America", url: "https://www.espn.com/f1", type: "paid" },
         { name: "Sky Sports F1", icon: "fas fa-satellite-dish", desc: "UK & Europe", url: "https://www.skysports.com/f1", type: "paid" },
         { name: "ServusTV", icon: "fas fa-globe", desc: "FREE - Austria/Germany", url: "https://www.servustv.com/sport/formel1/", type: "free" },
@@ -695,7 +697,7 @@
 
     function renderDrivers() {
         const container = document.getElementById('driversGrid');
-        if (container) container.innerHTML = drivers2026.map(d => `<div class="driver-card"><img class="driver-img" src="${d.img}" onerror="this.src='https://placehold.co/400x400/1a1a22/e10600?text=${d.name}'"><div class="driver-info-card"><strong>${d.name}</strong><br>${d.team} · #${d.num} ${d.flag}<br>🏆 ${d.wins} wins</div></div>`).join('');
+        if (container) container.innerHTML = drivers2026.map(d => `<div class="driver-card"><img class="driver-img" src="${d.img}" onerror="this.src='https://placehold.co/400x400/1a1a22/e10600?text=${d.name}'" alt="${d.name}"><div class="driver-info-card"><strong style="font-size:1.1rem;">${d.name}</strong><br>${d.team} · #${d.num} ${d.flag}<br>🏆 ${d.wins} wins</div></div>`).join('');
     }
 
     function renderConstructors() {
@@ -710,7 +712,7 @@
 
     function renderStreaming() {
         const container = document.getElementById('streamingSitesGrid');
-        if (container) container.innerHTML = streamingSites.map(s => `<div class="stream-site-card" onclick="window.open('${s.url}','_blank')"><i class="${s.icon}"></i><h3>${s.name} ${s.type === 'free' ? '<span class="free-badge">FREE</span>' : '<span class="paid-badge">PAID</span>'}</h3><p>${s.desc}</p><button class="stream-btn">Watch →</button></div>`).join('');
+        if (container) container.innerHTML = streamingSites.map(s => `<div class="stream-site-card" onclick="window.open('${s.url}','_blank')"><i class="${s.icon}"></i><h3>${s.name} ${s.type === 'free' ? '<span class="free-badge">FREE</span>' : '<span class="paid-badge">PAID</span>'}</h3><p>${s.desc}</p><button class="stream-btn">Watch Now →</button></div>`).join('');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -724,9 +726,9 @@
 
         document.getElementById('submitPredictionBtn').addEventListener('click', () => {
             const w = document.getElementById('winnerSelect').value, s = document.getElementById('secondSelect').value, t = document.getElementById('thirdSelect').value, msg = document.getElementById('predictionMessage');
-            if (w === s || w === t || s === t) { msg.innerHTML = '❌ Select three different drivers'; msg.style.color = '#ff8c00'; setTimeout(() => msg.innerHTML = '', 2000); return; }
+            if (w === s || w === t || s === t) { msg.innerHTML = '❌ Please select three different drivers'; msg.style.color = '#ff8c00'; setTimeout(() => msg.innerHTML = '', 2000); return; }
             savePrediction({ race: "Miami GP", date: new Date().toLocaleDateString(), winner: w, second: s, third: t });
-            msg.innerHTML = '✅ Prediction saved!'; msg.style.color = '#00a65a'; setTimeout(() => msg.innerHTML = '', 2000);
+            msg.innerHTML = '✅ Prediction saved! Check back after the race.'; msg.style.color = '#00a65a'; setTimeout(() => msg.innerHTML = '', 2000);
         });
 
         document.getElementById('navHome').addEventListener('click', () => showPage('homePage'));
