@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Formula 1 | 2026 Constructors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #0b0b12; font-family: 'Inter', 'Titillium Web', sans-serif; color: #fff; }
+        :root { --f1-red: #e10600; --f1-black: #0a0a0f; --f1-dark-card: #111116; --f1-border: #22222c; }
+        .site-wrapper { max-width: 1440px; margin: 0 auto; background: var(--f1-black); min-height: 100vh; }
+        .header { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: #08080c; border-bottom: 3px solid var(--f1-red); position: sticky; top: 0; z-index: 100; }
+        .logo-area { display: flex; align-items: baseline; gap: 12px; }
+        .f1-badge { font-size: 2rem; font-weight: 900; letter-spacing: -1.5px; color: white; }
+        .f1-badge span { font-size: 1rem; font-weight: 500; color: var(--f1-red); margin-left: 2px; }
+        .tagline { font-size: 0.7rem; font-weight: 500; color: #9e9eae; letter-spacing: 1px; border-left: 2px solid var(--f1-red); padding-left: 12px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--f1-red); border-bottom: 2px solid var(--f1-red); }
+        .btn-outline { border: 1.5px solid var(--f1-red); padding: 0.4rem 1.2rem; border-radius: 4px; background: transparent; color: white; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
+        .hero { background: linear-gradient(135deg, #0e0e18, #08080c); padding: 2rem; text-align: center; border-bottom: 2px solid var(--f1-red); }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .constructors-table { width: 100%; border-collapse: collapse; background: var(--f1-dark-card); border-radius: 12px; overflow: hidden; }
+        .constructors-table th { background: var(--f1-red); padding: 1rem; text-align: left; }
+        .constructors-table td { padding: 1rem; border-bottom: 1px solid var(--f1-border); vertical-align: middle; }
+        .team-logo { width: 50px; height: 35px; object-fit: contain; margin-right: 12px; vertical-align: middle; }
+        .team-name-cell { display: flex; align-items: center; gap: 12px; }
+        .team-points { background: var(--f1-red); padding: 4px 12px; border-radius: 20px; display: inline-block; font-weight: 700; }
+        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; border-top: 1px solid rgba(225,6,0,0.3); }
+        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } .team-logo { width: 35px; height: 25px; } }
+    </style>
+</head>
+<body>
+<div class="site-wrapper">
+    <header class="header">
+        <div class="logo-area"><div class="f1-badge">FORMULA 1<span>®</span></div><div class="tagline">OFFICIAL 2026 SEASON</div></div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="drivers.html">DRIVERS</a>
+            <a href="teams.html" class="active">TEAMS</a>
+            <a href="calendar.html">CALENDAR</a>
+            <a href="predict.html">F1 PREDICT</a>
+            <a href="watch.html" class="btn-outline">WATCH F1</a>
+        </div>
+    </header>
+    <div class="hero"><h1><i class="fas fa-building"></i> CONSTRUCTOR STANDINGS</h1></div>
+    <div class="container">
+        <table class="constructors-table">
+            <thead><tr><th>POS</th><th>TEAM</th><th>ENGINE</th><th>PTS</th></tr></thead>
+            <tbody id="constructorsTable"></tbody>
+        </table>
+    </div>
+    <footer class="footer"><p>© 2026 Formula One World Championship Limited.</p></footer>
+</div>
+<script>
+    const constructors = [
+        { pos: 1, name: "Mercedes", engine: "Mercedes", pts: 98, logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Mercedes-Benz_in_Formula_One_logo.svg" },
+        { pos: 2, name: "Ferrari", engine: "Ferrari", pts: 52, logo: "https://upload.wikimedia.org/wikipedia/de/c/c0/Scuderia_Ferrari_Logo.svg" },
+        { pos: 3, name: "McLaren", engine: "Mercedes", pts: 45, logo: "https://upload.wikimedia.org/wikipedia/en/6/66/McLaren_Racing_logo.svg" },
+        { pos: 4, name: "Red Bull Racing", engine: "Honda RBPT", pts: 28, logo: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Red_Bull_Racing_logo.svg" },
+        { pos: 5, name: "Haas", engine: "Ferrari", pts: 12, logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/MoneyGram_Haas_F1_Team_Logo.svg" },
+        { pos: 6, name: "Racing Bulls", engine: "Honda RBPT", pts: 8, logo: "https://upload.wikimedia.org/wikipedia/it/9/97/Visa_Cash_App_Racing_Bulls.webp" },
+        { pos: 7, name: "Alpine", engine: "Renault", pts: 6, logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Logo_of_alpine_f1_team_2022.png" },
+        { pos: 8, name: "Williams", engine: "Mercedes", pts: 4, logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Williams_Racing_2020_logo.png" },
+        { pos: 9, name: "Kick Sauber", engine: "Ferrari", pts: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Logo_of_Stake_F1_Team_Kick_Sauber.png" },
+        { pos: 10, name: "Aston Martin", engine: "Mercedes", pts: 0, logo: "https://upload.wikimedia.org/wikipedia/it/f/fb/Aston_Martin_Aramco_F1_Team.jpg" }
+    ];
+    function renderTable() {
+        const tbody = document.getElementById('constructorsTable');
+        if (tbody) tbody.innerHTML = constructors.map(c => `
+            <tr>
+                <td style="font-weight:700">${c.pos}</td>
+                <td><div class="team-name-cell"><img class="team-logo" src="${c.logo}" onerror="this.style.display='none'">${c.name}</div></td>
+                <td>${c.engine}</td>
+                <td><span class="team-points">${c.pts} PTS</span></td>
+            </tr>
+        `).join('');
+    }
+    document.addEventListener('DOMContentLoaded', renderTable);
+</script>
+</body>
+</html>
