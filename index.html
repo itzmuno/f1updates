@@ -169,6 +169,7 @@
             animation: ticker 35s linear infinite;
         }
         .ticker-content span { margin-right: 2rem; color: var(--f1-gray); cursor: pointer; }
+        .ticker-content span:hover { color: var(--f1-red); }
         @keyframes ticker {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
@@ -195,6 +196,7 @@
             border-radius: 16px;
             overflow: hidden;
             transition: 0.2s;
+            cursor: pointer;
         }
         .news-card:hover {
             border-color: var(--f1-red);
@@ -268,33 +270,73 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>© 2026 Formula One World Championship Limited. Make your predictions and compete globally.</p>
+        <p>© 2026 Formula One World Championship Limited. Click any news for full story.</p>
     </footer>
 </div>
 
 <script>
+    // Store news data in localStorage so detail page can access it
     const newsDatabase = [
-        { id: 1, title: "Antonelli dominates Miami Sprint Shootout", summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", date: "April 28, 2026", category: "Breaking News" },
-        { id: 2, title: "Ferrari brings major upgrade package to Miami", summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing.", image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", date: "April 27, 2026", category: "Tech" },
-        { id: 3, title: "Cadillac secures first Q3 appearance in home race", summary: "Sergio Perez qualified 9th, the team's first Q3 appearance.", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", date: "April 27, 2026", category: "Team News" }
+        { 
+            id: 1, 
+            title: "Antonelli dominates Miami Sprint Shootout", 
+            summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", 
+            fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout, setting the fastest time in every segment. The 19-year-old Italian will start from pole position for Saturday's Sprint Race. 'The car is flying, and I'm loving every moment,' Antonelli said. 'Miami is electric.' With 4 consecutive pole positions, Antonelli now leads the championship with 68 points, followed by George Russell (46 points). The Sprint Race starts at 2:30 PM local time on Saturday.",
+            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", 
+            date: "April 28, 2026", 
+            category: "Breaking News" 
+        },
+        { 
+            id: 2, 
+            title: "Ferrari brings major upgrade package to Miami", 
+            summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing for the Miami Grand Prix.", 
+            fullContent: "Ferrari has arrived in Miami with a significant upgrade package aimed at addressing the car's aerodynamic deficiencies. The new floor and rear wing are designed to increase downforce in medium-speed corners. 'We believe this is a step forward,' said team principal Fred Vasseur. 'The data from Friday practice looks promising.' Charles Leclerc and Lewis Hamilton both advanced to Q3, marking Ferrari's best qualifying result of the season.",
+            image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", 
+            date: "April 27, 2026", 
+            category: "Tech" 
+        },
+        { 
+            id: 3, 
+            title: "Cadillac secures first Q3 appearance in home race", 
+            summary: "Sergio Perez qualified 9th for the Miami Sprint Race, the team's first Q3 appearance.", 
+            fullContent: "Cadillac achieved its best qualifying result since joining F1, with Sergio Perez advancing to Q3 in the Miami Sprint Shootout. The Mexican driver will start 9th for Saturday's Sprint Race. 'The crowd was unbelievable,' Perez said. 'Every lap they cheered louder. This is for every American fan.' Teammate Valtteri Bottas also had his best qualifying of the season, starting P13.",
+            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", 
+            date: "April 27, 2026", 
+            category: "Team News" 
+        },
+        { 
+            id: 4, 
+            title: "Norris: 'McLaren ready to fight for wins'", 
+            summary: "Lando Norris believes McLaren has the pace to challenge for victories in the upcoming races.", 
+            fullContent: "Lando Norris has expressed confidence in McLaren's development trajectory after a strong start to the 2026 season. 'We're not just fighting for podiums anymore,' Norris said. 'Wins are within reach. The team has done an incredible job with the car.' McLaren has scored points in every race so far, with Norris finishing on the podium in Australia.",
+            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/norris.jpg", 
+            date: "April 26, 2026", 
+            category: "Interview" 
+        }
     ];
+
+    // Save news to localStorage for detail page
+    localStorage.setItem('f1NewsData', JSON.stringify(newsDatabase));
 
     function renderHomeNews() {
         const container = document.getElementById('homeNewsGrid');
         if (container) {
-            container.innerHTML = newsDatabase.map(n => `
-                <div class="news-card">
-                    <img class="news-image" src="${n.image}" onerror="this.src='https://placehold.co/600x400/1a1a22/e10600?text=F1'">
+            container.innerHTML = newsDatabase.map(news => `
+                <div class="news-card" onclick="window.location.href='news-detail.html?id=${news.id}'">
+                    <img class="news-image" src="${news.image}" onerror="this.src='https://placehold.co/600x400/1a1a22/e10600?text=F1+News'">
                     <div class="news-content">
-                        <h3>${n.title}</h3>
-                        <p>${n.summary}</p>
-                        <div class="news-date">${n.date} · ${n.category}</div>
+                        <h3>${news.title}</h3>
+                        <p>${news.summary}</p>
+                        <div class="news-date">${news.date} · ${news.category}</div>
                     </div>
                 </div>
             `).join('');
         }
+        
         const ticker = document.getElementById('tickerContent');
-        if (ticker) ticker.innerHTML = newsDatabase.map(n => `<span>🔴 ${n.title}</span>`).join('');
+        if (ticker) {
+            ticker.innerHTML = newsDatabase.map(news => `<span onclick="window.location.href='news-detail.html?id=${news.id}'">🔴 ${news.title}</span>`).join('');
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
