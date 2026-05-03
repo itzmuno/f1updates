@@ -3,28 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Formula 1 | 2026 Calendar</title>
+    <title>Formula 1 | 2026 Race Calendar</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #0b0b12; font-family: 'Inter', 'Titillium Web', sans-serif; color: white; }
-        :root { --f1-red: #e10600; --f1-black: #0a0a0f; --f1-dark-card: #111116; --f1-border: #22222c; }
+        :root { --f1-red: #e10600; --f1-black: #0a0a0f; --f1-dark-card: #111116; --f1-border: #22222c; --f1-gray: #9e9eae; }
         .site-wrapper { max-width: 1440px; margin: 0 auto; background: var(--f1-black); min-height: 100vh; }
-        .header { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: #08080c; border-bottom: 3px solid var(--f1-red); sticky; top: 0; z-index: 100; }
+        .header { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: #08080c; border-bottom: 3px solid var(--f1-red); position: sticky; top: 0; z-index: 100; }
         .logo-area { display: flex; align-items: baseline; gap: 12px; }
         .f1-badge { font-size: 2rem; font-weight: 900; color: white; }
         .f1-badge span { font-size: 1rem; font-weight: 500; color: var(--f1-red); margin-left: 2px; }
-        .tagline { font-size: 0.7rem; font-weight: 500; color: #9e9eae; border-left: 2px solid var(--f1-red); padding-left: 12px; }
+        .tagline { font-size: 0.7rem; font-weight: 500; color: var(--f1-gray); border-left: 2px solid var(--f1-red); padding-left: 12px; }
         .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
         .nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--f1-red); border-bottom: 2px solid var(--f1-red); }
         .btn-outline { border: 1.5px solid var(--f1-red); padding: 0.4rem 1.2rem; border-radius: 4px; background: transparent; color: white; cursor: pointer; }
         .hero { background: linear-gradient(135deg, #0e0e18, #08080c); padding: 2rem; text-align: center; border-bottom: 2px solid var(--f1-red); }
         .hero h1 { font-size: 2.5rem; font-weight: 800; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; text-align: center; }
-        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; }
-        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } }
+        .hero p { color: var(--f1-gray); margin-top: 0.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .calendar-grid { display: flex; flex-direction: column; gap: 1rem; }
+        .race-card { background: var(--f1-dark-card); border: 1px solid var(--f1-border); border-radius: 16px; transition: 0.2s; }
+        .race-card:hover { border-color: var(--f1-red); transform: translateX(5px); }
+        .race-content { padding: 1.2rem 1.5rem; }
+        .race-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+        .race-number { font-size: 0.85rem; font-weight: 700; background: var(--f1-red); padding: 2px 10px; border-radius: 30px; display: inline-block; }
+        .race-title { font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+        .race-flag { font-size: 1.8rem; }
+        .race-dates { color: var(--f1-gray); font-weight: 500; }
+        .status-badge { padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 700; }
+        .status-completed { background: #00a65a; }
+        .status-upcoming { background: #ff8c00; color: #1a1a1a; }
+        .status-cancelled { background: #e10600; }
+        .race-details { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
+        .circuit-name { font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        .circuit-location { font-size: 0.8rem; color: var(--f1-gray); }
+        .sprint-badge { background: rgba(225,6,0,0.2); border: 1px solid var(--f1-red); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }
+        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; border-top: 1px solid rgba(225,6,0,0.3); margin-top: 2rem; }
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.8rem; }
+        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } .race-title { font-size: 1rem; } .race-header { flex-direction: column; align-items: flex-start; } }
     </style>
 </head>
 <body>
@@ -40,11 +59,127 @@
             <a href="watch.html" class="btn-outline">WATCH F1</a>
         </div>
     </header>
-    <div class="hero"><h1><i class="fas fa-calendar-alt"></i> 2026 RACE CALENDAR</h1></div>
-    <div class="container">
-        <p style="color: #9e9eae;">Coming soon - Full 2026 race schedule.</p>
+
+    <div class="hero">
+        <h1><i class="fas fa-calendar-alt"></i> 2026 F1 Calendar</h1>
+        <p>24 races · 6 Sprint weekends · Nearest event on top</p>
     </div>
-    <footer class="footer"><p>© 2026 Formula One World Championship Limited.</p></footer>
+
+    <div class="container">
+        <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        <p>© 2026 Formula One World Championship Limited. Calendar subject to change.</p>
+    </footer>
 </div>
+
+<script>
+    // Complete 2026 calendar data
+    const calendarData = [
+        { round: 1, gp: "Australian Grand Prix", flag: "🇦🇺", circuit: "Albert Park Circuit", location: "Melbourne", dateStart: "Mar 6", dateEnd: "Mar 8", status: "completed", sprint: false },
+        { round: 2, gp: "Chinese Grand Prix", flag: "🇨🇳", circuit: "Shanghai International Circuit", location: "Shanghai", dateStart: "Mar 13", dateEnd: "Mar 15", status: "completed", sprint: true },
+        { round: 3, gp: "Japanese Grand Prix", flag: "🇯🇵", circuit: "Suzuka International Racing Course", location: "Suzuka", dateStart: "Mar 27", dateEnd: "Mar 29", status: "completed", sprint: false },
+        { round: null, gp: "Bahrain Grand Prix", flag: "🇧🇭", circuit: "Bahrain International Circuit", location: "Sakhir", dateStart: "Apr 10", dateEnd: "Apr 12", status: "cancelled", sprint: false, note: "Cancelled due to regional conflict" },
+        { round: null, gp: "Saudi Arabian Grand Prix", flag: "🇸🇦", circuit: "Jeddah Corniche Circuit", location: "Jeddah", dateStart: "Apr 17", dateEnd: "Apr 19", status: "cancelled", sprint: false, note: "Cancelled due to regional conflict" },
+        { round: 4, gp: "Miami Grand Prix", flag: "🇺🇸", circuit: "Miami International Autodrome", location: "Miami Gardens", dateStart: "May 1", dateEnd: "May 3", status: "upcoming", sprint: true },
+        { round: 5, gp: "Canadian Grand Prix", flag: "🇨🇦", circuit: "Circuit Gilles Villeneuve", location: "Montreal", dateStart: "May 22", dateEnd: "May 24", status: "upcoming", sprint: true },
+        { round: 6, gp: "Monaco Grand Prix", flag: "🇲🇨", circuit: "Circuit de Monaco", location: "Monte Carlo", dateStart: "Jun 5", dateEnd: "Jun 7", status: "upcoming", sprint: false },
+        { round: 7, gp: "Spanish Grand Prix", flag: "🇪🇸", circuit: "Circuit de Barcelona-Catalunya", location: "Barcelona", dateStart: "Jun 12", dateEnd: "Jun 14", status: "upcoming", sprint: false },
+        { round: 8, gp: "Austrian Grand Prix", flag: "🇦🇹", circuit: "Red Bull Ring", location: "Spielberg", dateStart: "Jun 26", dateEnd: "Jun 28", status: "upcoming", sprint: true },
+        { round: 9, gp: "British Grand Prix", flag: "🇬🇧", circuit: "Silverstone Circuit", location: "Silverstone", dateStart: "Jul 3", dateEnd: "Jul 5", status: "upcoming", sprint: false },
+        { round: 10, gp: "Belgian Grand Prix", flag: "🇧🇪", circuit: "Circuit de Spa-Francorchamps", location: "Spa", dateStart: "Jul 17", dateEnd: "Jul 19", status: "upcoming", sprint: true },
+        { round: 11, gp: "Hungarian Grand Prix", flag: "🇭🇺", circuit: "Hungaroring", location: "Budapest", dateStart: "Jul 24", dateEnd: "Jul 26", status: "upcoming", sprint: false },
+        { round: 12, gp: "Dutch Grand Prix", flag: "🇳🇱", circuit: "Circuit Zandvoort", location: "Zandvoort", dateStart: "Aug 21", dateEnd: "Aug 23", status: "upcoming", sprint: false },
+        { round: 13, gp: "Italian Grand Prix", flag: "🇮🇹", circuit: "Autodromo Nazionale Monza", location: "Monza", dateStart: "Sep 4", dateEnd: "Sep 6", status: "upcoming", sprint: false },
+        { round: 14, gp: "Madrid Grand Prix", flag: "🇪🇸", circuit: "Circuito del Jarama (new layout)", location: "Madrid", dateStart: "Sep 11", dateEnd: "Sep 13", status: "upcoming", sprint: false },
+        { round: 15, gp: "Azerbaijan Grand Prix", flag: "🇦🇿", circuit: "Baku City Circuit", location: "Baku", dateStart: "Sep 25", dateEnd: "Sep 27", status: "upcoming", sprint: false },
+        { round: 16, gp: "Singapore Grand Prix", flag: "🇸🇬", circuit: "Marina Bay Street Circuit", location: "Singapore", dateStart: "Oct 9", dateEnd: "Oct 11", status: "upcoming", sprint: false },
+        { round: 17, gp: "United States Grand Prix", flag: "🇺🇸", circuit: "Circuit of the Americas", location: "Austin", dateStart: "Oct 23", dateEnd: "Oct 25", status: "upcoming", sprint: true },
+        { round: 18, gp: "Mexico City Grand Prix", flag: "🇲🇽", circuit: "Autódromo Hermanos Rodríguez", location: "Mexico City", dateStart: "Oct 30", dateEnd: "Nov 1", status: "upcoming", sprint: false },
+        { round: 19, gp: "São Paulo Grand Prix", flag: "🇧🇷", circuit: "Interlagos", location: "São Paulo", dateStart: "Nov 6", dateEnd: "Nov 8", status: "upcoming", sprint: true },
+        { round: 20, gp: "Las Vegas Grand Prix", flag: "🇺🇸", circuit: "Las Vegas Strip Circuit", location: "Las Vegas", dateStart: "Nov 19", dateEnd: "Nov 21", status: "upcoming", sprint: false },
+        { round: 21, gp: "Qatar Grand Prix", flag: "🇶🇦", circuit: "Lusail International Circuit", location: "Lusail", dateStart: "Nov 27", dateEnd: "Nov 29", status: "upcoming", sprint: false },
+        { round: 22, gp: "Abu Dhabi Grand Prix", flag: "🇦🇪", circuit: "Yas Marina Circuit", location: "Abu Dhabi", dateStart: "Dec 4", dateEnd: "Dec 6", status: "upcoming", sprint: false }
+    ];
+
+    // Helper to convert "MMM DD" to a day-of-year number for sorting
+    function getDayNumber(dateStr) {
+        const months = { Jan: 0, Feb: 31, Mar: 59, Apr: 90, May: 120, Jun: 151, Jul: 181, Aug: 212, Sep: 243, Oct: 273, Nov: 304, Dec: 334 };
+        const parts = dateStr.split(' ');
+        if (parts.length < 2) return 0;
+        const month = parts[0];
+        const day = parseInt(parts[1]);
+        return (months[month] || 0) + day;
+    }
+
+    function getCurrentDayNumber() {
+        const now = new Date();
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const monthName = months[now.getMonth()];
+        const day = now.getDate();
+        return getDayNumber(`${monthName} ${day}`);
+    }
+
+    function sortCalendar(events) {
+        const today = getCurrentDayNumber();
+        const upcoming = [];
+        const completed = [];
+        const cancelled = [];
+        events.forEach(event => {
+            if (event.status === 'cancelled') {
+                cancelled.push(event);
+            } else {
+                const raceDay = getDayNumber(event.dateStart);
+                if (raceDay >= today) upcoming.push(event);
+                else completed.push(event);
+            }
+        });
+        upcoming.sort((a,b) => getDayNumber(a.dateStart) - getDayNumber(b.dateStart));
+        completed.sort((a,b) => getDayNumber(b.dateStart) - getDayNumber(a.dateStart));
+        return [...upcoming, ...completed, ...cancelled];
+    }
+
+    function renderCalendar() {
+        const container = document.getElementById('calendarGrid');
+        if (!container) return;
+        const sorted = sortCalendar([...calendarData]);
+        container.innerHTML = sorted.map(race => {
+            let statusClass = '', statusText = '';
+            if (race.status === 'completed') { statusClass = 'status-completed'; statusText = 'COMPLETED'; }
+            else if (race.status === 'cancelled') { statusClass = 'status-cancelled'; statusText = 'CANCELLED'; }
+            else { statusClass = 'status-upcoming'; statusText = 'UPCOMING'; }
+            const roundDisplay = race.round ? `Round ${race.round}` : '—';
+            const sprintHtml = race.sprint ? `<span class="sprint-badge"><i class="fas fa-bolt"></i> SPRINT</span>` : '';
+            const noteHtml = race.note ? `<div style="font-size:0.7rem; color:var(--f1-red); margin-top:5px;"><i class="fas fa-exclamation-triangle"></i> ${race.note}</div>` : '';
+            return `
+                <div class="race-card">
+                    <div class="race-content">
+                        <div class="race-header">
+                            <div class="race-title">
+                                <span class="race-number">${roundDisplay}</span>
+                                <span class="race-flag">${race.flag}</span>
+                                <span>${race.gp}</span>
+                                ${sprintHtml}
+                            </div>
+                            <div class="race-dates">${race.dateStart} – ${race.dateEnd}</div>
+                        </div>
+                        <div class="race-details">
+                            <div>
+                                <div class="circuit-name"><i class="fas fa-road"></i> ${race.circuit}</div>
+                                <div class="circuit-location"><i class="fas fa-map-marker-alt"></i> ${race.location}</div>
+                                ${noteHtml}
+                            </div>
+                            <div><span class="status-badge ${statusClass}">${statusText}</span></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCalendar);
+</script>
 </body>
 </html>
