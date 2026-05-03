@@ -3,37 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Formula 1 | Watch F1 2026</title>
+    <title>Formula 1 | Watch F1 Live 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #0b0b12; font-family: 'Inter', 'Titillium Web', sans-serif; color: #fff; }
-        :root { --f1-red: #e10600; --f1-black: #0a0a0f; --f1-dark-card: #111116; --f1-border: #22222c; }
-        .site-wrapper { max-width: 1440px; margin: 0 auto; background: var(--f1-black); min-height: 100vh; }
-        .header { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: #08080c; border-bottom: 3px solid var(--f1-red); position: sticky; top: 0; z-index: 100; }
-        .logo-area { display: flex; align-items: baseline; gap: 12px; }
-        .f1-badge { font-size: 2rem; font-weight: 900; letter-spacing: -1.5px; color: white; }
-        .f1-badge span { font-size: 1rem; font-weight: 500; color: var(--f1-red); margin-left: 2px; }
-        .tagline { font-size: 0.7rem; font-weight: 500; color: #9e9eae; letter-spacing: 1px; border-left: 2px solid var(--f1-red); padding-left: 12px; }
-        .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-        .nav-links a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--f1-red); border-bottom: 2px solid var(--f1-red); }
-        .btn-outline { border: 1.5px solid var(--f1-red); padding: 0.4rem 1.2rem; border-radius: 4px; background: transparent; color: white; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
-        .hero { background: linear-gradient(135deg, #0e0e18, #08080c); padding: 2rem; text-align: center; border-bottom: 2px solid var(--f1-red); }
-        .hero h1 { font-size: 2.5rem; font-weight: 800; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .stream-card { background: var(--f1-dark-card); border-radius: 20px; padding: 1.5rem; text-align: center; cursor: pointer; border: 1px solid var(--f1-border); transition: 0.2s; }
-        .stream-card:hover { border-color: var(--f1-red); transform: translateY(-5px); }
-        .stream-card i { font-size: 2.5rem; color: var(--f1-red); margin-bottom: 1rem; }
-        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; border-top: 1px solid rgba(225,6,0,0.3); }
-        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0b0b12;
+            font-family: 'Inter', 'Titillium Web', sans-serif;
+            color: #ffffff;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --f1-red: #e10600;
+            --f1-black: #0a0a0f;
+            --f1-dark-card: #111116;
+            --f1-border: #22222c;
+            --f1-gray: #9e9eae;
+        }
+
+        .site-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: var(--f1-black);
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #08080c;
+            border-bottom: 3px solid var(--f1-red);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .f1-badge {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            color: white;
+        }
+        .f1-badge span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--f1-red);
+            margin-left: 2px;
+        }
+        .tagline {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--f1-gray);
+            letter-spacing: 1px;
+            border-left: 2px solid var(--f1-red);
+            padding-left: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--f1-red);
+            border-bottom: 2px solid var(--f1-red);
+        }
+        .btn-outline {
+            border: 1.5px solid var(--f1-red);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            background: transparent;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--f1-red);
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0e0e18, #08080c);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--f1-red);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .hero p {
+            color: var(--f1-gray);
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+            border-left: 4px solid var(--f1-red);
+            padding-left: 1rem;
+        }
+        .section-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .streaming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stream-card {
+            background: var(--f1-dark-card);
+            border: 1px solid var(--f1-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .stream-card:hover {
+            border-color: var(--f1-red);
+            transform: translateY(-5px);
+        }
+        .stream-card i {
+            font-size: 2.5rem;
+            color: var(--f1-red);
+            margin-bottom: 1rem;
+        }
+        .stream-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .stream-card p {
+            color: var(--f1-gray);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        .badge-paid {
+            background: #ff8c00;
+            color: #1a1a1a;
+        }
+        .badge-free {
+            background: #00a65a;
+            color: white;
+        }
+        .watch-btn {
+            background: var(--f1-red);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            margin-top: 0.8rem;
+            transition: 0.2s;
+        }
+        .watch-btn:hover {
+            background: #b10500;
+        }
+
+        .footer {
+            background: #06060a;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.7rem;
+            border-top: 1px solid rgba(225,6,0,0.3);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 800px) {
+            .header { flex-direction: column; gap: 1rem; }
+            .hero h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
 <div class="site-wrapper">
     <header class="header">
-        <div class="logo-area"><div class="f1-badge">FORMULA 1<span>®</span></div><div class="tagline">OFFICIAL 2026 SEASON</div></div>
+        <div class="logo-area">
+            <div class="f1-badge">FORMULA 1<span>®</span></div>
+            <div class="tagline">OFFICIAL 2026 SEASON</div>
+        </div>
         <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="drivers.html">DRIVERS</a>
@@ -43,13 +243,81 @@
             <a href="watch.html" class="active">WATCH F1</a>
         </div>
     </header>
-    <div class="hero"><h1><i class="fas fa-tv"></i> WATCH FORMULA 1</h1><p>Choose your streaming service</p></div>
-    <div class="container">
-        <div class="stream-card" onclick="window.open('https://f1tv.formula1.com','_blank')"><i class="fas fa-play-circle"></i><h3>F1 TV Pro</h3><p>Official F1 streaming service</p><button class="btn-outline">Watch →</button></div>
-        <div class="stream-card" onclick="window.open('https://www.espn.com/f1','_blank')"><i class="fas fa-tv"></i><h3>ESPN</h3><p>USA & Latin America</p><button class="btn-outline">Watch →</button></div>
-        <div class="stream-card" onclick="window.open('https://www.skysports.com/f1','_blank')"><i class="fas fa-satellite-dish"></i><h3>Sky Sports F1</h3><p>UK & Europe</p><button class="btn-outline">Watch →</button></div>
+
+    <div class="hero">
+        <h1><i class="fas fa-tv"></i> WATCH FORMULA 1</h1>
+        <p>Choose a streaming service – paid or free – to watch live Grands Prix</p>
     </div>
-    <footer class="footer"><p>© 2026 Formula One World Championship Limited.</p></footer>
+
+    <div class="container">
+        <div class="section-header"><i class="fas fa-dollar-sign"></i> PAID SUBSCRIPTION</div>
+        <div class="streaming-grid">
+            <!-- F1 TV Pro -->
+            <div class="stream-card" onclick="window.open('https://f1tv.formula1.com', '_blank')">
+                <i class="fas fa-play-circle"></i>
+                <h3>F1 TV Pro</h3>
+                <p>Official F1 live streaming. All races, onboard cameras, replays.</p>
+                <span class="badge badge-paid">PAID</span><br>
+                <button class="watch-btn">Watch Now →</button>
+            </div>
+            <!-- ESPN -->
+            <div class="stream-card" onclick="window.open('https://www.espn.com/f1', '_blank')">
+                <i class="fas fa-tv"></i>
+                <h3>ESPN</h3>
+                <p>Live coverage for USA & Latin America (requires cable login).</p>
+                <span class="badge badge-paid">PAID</span><br>
+                <button class="watch-btn">Watch Now →</button>
+            </div>
+            <!-- Sky Sports F1 -->
+            <div class="stream-card" onclick="window.open('https://www.skysports.com/f1', '_blank')">
+                <i class="fas fa-satellite-dish"></i>
+                <h3>Sky Sports F1</h3>
+                <p>UK & Europe live broadcast. Expert analysis and interviews.</p>
+                <span class="badge badge-paid">PAID</span><br>
+                <button class="watch-btn">Watch Now →</button>
+            </div>
+        </div>
+
+        <div class="section-header"><i class="fas fa-globe"></i> FREE OPTIONS (geo-restricted)</div>
+        <div class="streaming-grid">
+            <!-- ServusTV (Austria / Germany) -->
+            <div class="stream-card" onclick="window.open('https://www.servustv.com/sport/formel1/', '_blank')">
+                <i class="fas fa-globe-europe"></i>
+                <h3>ServusTV</h3>
+                <p>FREE – Austria & Germany (German commentary). Live races & qualifying.</p>
+                <span class="badge badge-free">FREE</span><br>
+                <button class="watch-btn">Watch Now →</button>
+            </div>
+            <!-- RTBF (Belgium French) -->
+            <div class="stream-card" onclick="window.open('https://www.rtbf.be/sport/f1/', '_blank')">
+                <i class="fas fa-language"></i>
+                <h3>RTBF</h3>
+                <p>FREE – Belgium (French language). Live races and highlights.</p>
+                <span class="badge badge-free">FREE</span><br>
+                <button class="watch-btn">Watch Now →</button>
+            </div>
+            <!-- ORF (Austria) -->
+            <div class="stream-card" onclick="window.open('https://tv.orf.at/sport/f1', '_blank')">
+                <i class="fas fa-tower-broadcast"></i>
+                <h3>ORF</h3>
+                <p>FREE – Austrian broadcaster. Live coverage of selected races.</p>
+                <span class="badge badge-free">FREE</span><br>
+                <button class="watch-btn">Watch Now →</button>
+            </div>
+        </div>
+        <p style="color: var(--f1-gray); font-size: 0.8rem; text-align: center; margin-top: 2rem;">
+            <i class="fas fa-info-circle"></i> Free options may require a VPN if accessed outside the listed countries. All links open official broadcasters.
+        </p>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2026 Formula One World Championship Limited. External links open official streaming platforms.</p>
+    </footer>
 </div>
 </body>
 </html>
