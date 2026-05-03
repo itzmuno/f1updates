@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Formula 1 | The Official Home of Racing 2026</title>
+    <title>Formula 1 | 2026 Constructors & Team News</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -19,65 +19,195 @@
         .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
         .nav-links a { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--f1-red); border-bottom: 2px solid var(--f1-red); }
-        .btn-outline { border: 1.5px solid var(--f1-red); padding: 0.4rem 1.2rem; border-radius: 4px; background: transparent; color: white; font-weight: 700; font-size: 0.8rem; transition: all 0.2s; cursor: pointer; }
+        .btn-outline { border: 1.5px solid var(--f1-red); padding: 0.4rem 1.2rem; border-radius: 4px; background: transparent; color: white; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
         .btn-outline:hover { background: var(--f1-red); color: white; }
-        .hero { min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1541343672885-9be56236302a?w=1600&h=600&fit=crop'); background-size: cover; background-position: center; padding: 3rem 2rem; }
-        .hero-content h1 { font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 1rem; }
-        .hero-content .f1-highlight { color: var(--f1-red); }
-        .hero-buttons { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; }
-        .btn-f1-primary { background: var(--f1-red); border: none; padding: 0.8rem 2rem; border-radius: 5px; font-weight: 700; text-transform: uppercase; color: white; cursor: pointer; }
-        .btn-f1-secondary { background: rgba(255,255,255,0.1); border: 1px solid white; padding: 0.8rem 2rem; border-radius: 5px; font-weight: 700; text-transform: uppercase; color: white; cursor: pointer; }
-        .home-section { padding: 4rem 2rem; }
-        .container { max-width: 1280px; margin: 0 auto; }
-        .section-header { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; border-left: 4px solid var(--f1-red); padding-left: 1rem; }
-        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; }
+        .hero { background: linear-gradient(135deg, #0e0e18, #08080c); padding: 2rem; text-align: center; border-bottom: 2px solid var(--f1-red); }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; }
+        .hero p { color: var(--f1-gray); margin-top: 0.5rem; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+        .section-header { font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; border-left: 4px solid var(--f1-red); padding-left: 1rem; }
+        .constructors-table { width: 100%; border-collapse: collapse; background: var(--f1-dark-card); border-radius: 20px; overflow: hidden; margin-bottom: 2.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        .constructors-table th { background: var(--f1-red); padding: 1rem; text-align: left; font-weight: 700; }
+        .constructors-table td { padding: 1rem; border-bottom: 1px solid var(--f1-border); }
+        .team-points { background: var(--f1-red); padding: 4px 12px; border-radius: 30px; display: inline-block; font-weight: 700; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.8rem; margin-top: 0.5rem; }
+        .news-card { background: var(--f1-dark-card); border: 1px solid var(--f1-border); border-radius: 20px; overflow: hidden; transition: 0.25s; cursor: pointer; }
+        .news-card:hover { border-color: var(--f1-red); transform: translateY(-5px); }
+        .news-header { background: linear-gradient(135deg, #1a1a28, #0f0f18); padding: 1rem 1.2rem; border-bottom: 1px solid var(--f1-border); }
+        .news-header h3 { font-size: 1.2rem; color: var(--f1-red); display: flex; align-items: center; gap: 8px; }
+        .news-body { padding: 1.2rem; }
+        .news-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .news-summary { color: var(--f1-gray); font-size: 0.85rem; line-height: 1.4; margin-bottom: 0.5rem; }
+        .news-date { font-size: 0.7rem; color: var(--f1-red); margin-top: 0.5rem; display: flex; align-items: center; gap: 6px; }
+        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; border-top: 1px solid rgba(225,6,0,0.3); }
         .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.8rem; }
-        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } .hero-content h1 { font-size: 1.8rem; } }
+        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } .news-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 <div class="site-wrapper">
     <header class="header">
-        <div class="logo-area">
-            <div class="f1-badge">FORMULA 1<span>®</span></div>
-            <div class="tagline">OFFICIAL 2026 SEASON</div>
-        </div>
+        <div class="logo-area"><div class="f1-badge">FORMULA 1<span>®</span></div><div class="tagline">OFFICIAL 2026 SEASON</div></div>
         <div class="nav-links">
-            <a href="index.html" class="active">HOME</a>
+            <a href="index.html">HOME</a>
             <a href="drivers.html">DRIVERS</a>
-            <a href="teams.html">TEAMS</a>
+            <a href="teams.html" class="active">TEAMS</a>
             <a href="calendar.html">CALENDAR</a>
             <a href="predict.html">F1 PREDICT</a>
             <a href="watch.html" class="btn-outline">WATCH F1</a>
         </div>
     </header>
 
-    <div class="hero">
-        <div class="hero-content">
-            <h1>WELCOME TO <span class="f1-highlight">FORMULA 1</span></h1>
-            <p>Make your predictions, compete with fans, and follow all the action.</p>
-            <div class="hero-buttons">
-                <a href="predict.html"><button class="btn-f1-primary">MAKE YOUR PREDICTION →</button></a>
-                <a href="calendar.html"><button class="btn-f1-secondary">VIEW CALENDAR →</button></a>
-            </div>
-        </div>
-    </div>
+    <div class="hero"><h1><i class="fas fa-building"></i> 2026 CONSTRUCTOR STANDINGS</h1><p>Live championship table & team news</p></div>
 
-    <div class="home-section">
-        <div class="container">
-            <div class="section-header"><i class="fas fa-newspaper"></i> LATEST F1 NEWS</div>
-            <p style="color: var(--f1-gray);">Click on Drivers, Teams, Calendar, or F1 Predict above to explore.</p>
-        </div>
+    <div class="container">
+        <!-- Constructor Standings Table -->
+        <table class="constructors-table">
+            <thead><tr><th>POS</th><th>TEAM</th><th>ENGINE</th><th>PTS</th><th>WINS</th></tr></thead>
+            <tbody id="constructorStandingsBody"></tbody>
+        追赶
+
+        <div class="section-header"><i class="fas fa-newspaper"></i> LATEST TEAM NEWS</div>
+        <div class="news-grid" id="teamNewsGrid"></div>
     </div>
 
     <footer class="footer">
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>© 2026 Formula One World Championship Limited.</p>
+        <div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        <p>© 2026 Formula One World Championship Limited. Standings updated after the Miami Grand Prix Sprint.</p>
     </footer>
 </div>
+
+<script>
+    // Constructor standings data
+    const constructorStandings = [
+        { pos: 1, name: "Mercedes", engine: "Mercedes", pts: 98, wins: 3 },
+        { pos: 2, name: "Ferrari", engine: "Ferrari", pts: 52, wins: 0 },
+        { pos: 3, name: "McLaren", engine: "Mercedes", pts: 45, wins: 0 },
+        { pos: 4, name: "Red Bull Racing", engine: "Honda RBPT", pts: 28, wins: 0 },
+        { pos: 5, name: "Haas", engine: "Ferrari", pts: 12, wins: 0 },
+        { pos: 6, name: "Racing Bulls", engine: "Honda RBPT", pts: 8, wins: 0 },
+        { pos: 7, name: "Alpine", engine: "Renault", pts: 6, wins: 0 },
+        { pos: 8, name: "Williams", engine: "Mercedes", pts: 4, wins: 0 },
+        { pos: 9, name: "Audi", engine: "Audi", pts: 2, wins: 0 },
+        { pos: 10, name: "Aston Martin", engine: "Honda", pts: 0, wins: 0 },
+        { pos: 11, name: "Cadillac", engine: "Ferrari", pts: 0, wins: 0 }
+    ];
+
+    // Team news items (each has full content and video ID)
+    const teamNews = [
+        {
+            id: 1,
+            team: "Mercedes",
+            title: "Antonelli extends championship lead with Miami Sprint victory",
+            summary: "Kimi Antonelli continued his dominant rookie season by winning the Miami Sprint Race, increasing his lead over teammate Russell to 22 points. Mercedes remains unbeaten in 2026.",
+            fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout, setting the fastest time in every segment. The 19-year-old Italian will start from pole position for Saturday's Sprint Race. 'The car is flying, and I'm loving every moment,' Antonelli said. 'Miami is electric.' With 4 consecutive pole positions, Antonelli now leads the championship with 68 points, followed by George Russell (46 points). The Sprint Race starts at 2:30 PM local time on Saturday.",
+            date: "May 2, 2026",
+            videoId: "bYFqGzC2P0A"  // Example F1 highlights video (placeholder)
+        },
+        {
+            id: 2,
+            team: "Ferrari",
+            title: "Major upgrade package shows promise in Miami",
+            summary: "Ferrari introduced a heavily revised floor and rear wing in Miami, with Leclerc qualifying 3rd for the Sprint. 'We're moving in the right direction,' said Vasseur.",
+            fullContent: "Ferrari has arrived in Miami with a significant upgrade package aimed at addressing the car's aerodynamic deficiencies. The new floor and rear wing are designed to increase downforce in medium-speed corners. 'We believe this is a step forward,' said team principal Fred Vasseur. 'The data from Friday practice looks promising.' Charles Leclerc and Lewis Hamilton both advanced to Q3, marking Ferrari's best qualifying result of the season.",
+            date: "May 1, 2026",
+            videoId: "RrXqR8ZW4M0"
+        },
+        {
+            id: 3,
+            team: "McLaren",
+            title: "Norris takes Sprint pole, signals McLaren's return to front",
+            summary: "Lando Norris claimed pole for the Miami Sprint, beating Antonelli by 0.07s. The upgraded MCL40 showed genuine pace, raising hopes for a first win since 2024.",
+            fullContent: "Lando Norris achieved McLaren's first pole position since 2024 by beating Kimi Antonelli by 0.07 seconds in the Miami Sprint Shootout. The revamped MCL40 features a completely new floor and front wing. 'We have turned a corner,' said Norris. 'This car can win races.' McLaren has scored points in every race this season, with Norris finishing on the podium in Australia.",
+            date: "May 1, 2026",
+            videoId: "j5YvS5DAiDQ"
+        },
+        {
+            id: 4,
+            team: "Red Bull",
+            title: "Verstappen admits 'we are not fast enough'",
+            summary: "After a disappointing start to 2026, Max Verstappen acknowledged Red Bull's performance deficit. 'We need to understand what's wrong,' he said after finishing 7th in the Sprint.",
+            fullContent: "Max Verstappen was frank about Red Bull's struggles after qualifying only 7th for the Miami Sprint. 'We are not fast enough, plain and simple,' said the three-time world champion. 'The Mercedes and McLaren are ahead by a big margin. We have a lot of work to do.' Red Bull introduced a B-spec car in Miami, but early signs suggest the upgrade package has not closed the gap.",
+            date: "April 30, 2026",
+            videoId: "XsR_2mX7wGg"
+        },
+        {
+            id: 5,
+            team: "Haas",
+            title: "American team sits best-ever 5th in constructors'",
+            summary: "Haas continues to impress, with Ocon and Bearman scoring points in three consecutive races. The team is targeting a best‑ever finish in 2026.",
+            fullContent: "Haas is enjoying its best start to a season, sitting 5th in the constructors' championship after three rounds. Esteban Ocon and rookie Oliver Bearman have both scored points, and the team's upgrade program is delivering. 'We are exceeding expectations,' said team principal Ayao Komatsu. 'The aim now is to keep this momentum and fight for top-five finishes.'",
+            date: "April 29, 2026",
+            videoId: "QlIDrGkM7M4"
+        },
+        {
+            id: 6,
+            team: "Williams",
+            title: "Albon and Sainz bring points to Grove",
+            summary: "Alex Albon scored Williams' first points of the season in Miami, finishing 9th. Carlos Sainz narrowly missed out in 11th. The team is gaining momentum.",
+            fullContent: "Williams finally got off the mark in 2026 as Alex Albon finished 9th in the Miami Sprint, earning the team's first two points. Carlos Sainz was 11th, just 0.2 seconds away from points. 'We have a solid baseline now,' said Albon. 'The upgrades are working, and we can build from here.' The team is optimistic ahead of the main Grand Prix.",
+            date: "May 1, 2026",
+            videoId: "qf0A_bnvZnM"
+        },
+        {
+            id: 7,
+            team: "Alpine",
+            title: "Gasly and Colapinto show flashes of speed",
+            summary: "Both Alpine drivers reached Q2 in Miami, with Colapinto outqualifying his experienced teammate. The team is optimistic about future upgrades.",
+            fullContent: "Alpine showed improved pace in Miami, with Pierre Gasly and Franco Colapinto both advancing to Q2. The young Argentinian Colapinto even outqualified his more experienced teammate. 'We are getting there,' said Gasly. 'The car is responding to our updates. It's not yet where we want, but the direction is positive.'",
+            date: "April 30, 2026",
+            videoId: "dFw0G1FQb_Q"
+        },
+        {
+            id: 8,
+            team: "Cadillac",
+            title: "Historic home race for American team",
+            summary: "Cadillac celebrated its first home Grand Prix in Miami. Perez finished 12th, just outside the points, but the team received massive support from the local fans.",
+            fullContent: "Cadillac achieved its best qualifying result since joining F1, with Sergio Perez advancing to Q3 in the Miami Sprint Shootout. The Mexican driver will start 9th for Saturday's Sprint Race. 'The crowd was unbelievable,' Perez said. 'Every lap they cheered louder. This is for every American fan.' Teammate Valtteri Bottas also had his best qualifying of the season, starting P13.",
+            date: "May 1, 2026",
+            videoId: "yv_3s7yMBSo"
+        }
+    ];
+
+    function renderConstructorTable() {
+        const tbody = document.getElementById('constructorStandingsBody');
+        if (tbody) {
+            tbody.innerHTML = constructorStandings.map(team => `
+                <tr>
+                    <td style="font-weight: 700;">${team.pos}</td>
+                    <td><strong>${team.name}</strong></td>
+                    <td>${team.engine}</td>
+                    <td><span class="team-points">${team.pts} PTS</span></td>
+                    <td>${team.wins}</td>
+                </tr>
+            `).join('');
+        }
+    }
+
+    function renderNewsCards() {
+        const container = document.getElementById('teamNewsGrid');
+        if (container) {
+            container.innerHTML = teamNews.map(news => `
+                <div class="news-card" onclick="window.location.href='news-detail.html?id=${news.id}'">
+                    <div class="news-header">
+                        <h3><i class="fas fa-flag-checkered"></i> ${news.team}</h3>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-title">${news.title}</div>
+                        <div class="news-summary">${news.summary}</div>
+                        <div class="news-date">
+                            <i class="far fa-calendar-alt"></i> ${news.date}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderConstructorTable();
+        renderNewsCards();
+    });
+</script>
 </body>
 </html>
