@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Formula 1 | 2026 Teams & Constructor Standings</title>
+    <title>Formula 1 | 2026 Constructors & Team News</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -131,9 +131,7 @@
             margin: 0 auto;
             padding: 2rem;
         }
-        .section-container {
-            margin-bottom: 3rem;
-        }
+
         .section-header {
             font-size: 1.8rem;
             font-weight: 700;
@@ -142,30 +140,36 @@
             padding-left: 1rem;
         }
 
-        /* Table Styles */
+        /* Constructor Table */
         .constructors-table {
             width: 100%;
             border-collapse: collapse;
             background: var(--f1-dark-card);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-bottom: 1rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         .constructors-table th {
             background: var(--f1-red);
             padding: 1rem;
             text-align: left;
             font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
         .constructors-table td {
             padding: 1rem;
             border-bottom: 1px solid var(--f1-border);
-            vertical-align: middle;
+            font-size: 0.95rem;
+        }
+        .constructors-table tr:last-child td {
+            border-bottom: none;
         }
         .team-points {
             background: var(--f1-red);
             padding: 4px 12px;
-            border-radius: 20px;
+            border-radius: 30px;
             display: inline-block;
             font-weight: 700;
         }
@@ -174,54 +178,53 @@
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
+            gap: 1.8rem;
+            margin-top: 0.5rem;
         }
         .news-card {
             background: var(--f1-dark-card);
             border: 1px solid var(--f1-border);
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            transition: 0.2s;
+            transition: 0.25s;
         }
         .news-card:hover {
             border-color: var(--f1-red);
-            transform: translateY(-4px);
+            transform: translateY(-5px);
         }
         .news-header {
             background: linear-gradient(135deg, #1a1a28, #0f0f18);
-            padding: 1rem;
+            padding: 1rem 1.2rem;
             border-bottom: 1px solid var(--f1-border);
         }
         .news-header h3 {
+            font-size: 1.2rem;
             color: var(--f1-red);
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .news-body {
-            padding: 1rem;
+            padding: 1.2rem;
         }
         .news-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
         .news-summary {
             color: var(--f1-gray);
             font-size: 0.85rem;
             line-height: 1.4;
+            margin-bottom: 0.5rem;
         }
         .news-date {
-            margin-top: 0.5rem;
             font-size: 0.7rem;
             color: var(--f1-red);
-        }
-        .live-badge {
-            background-color: #e10600;
-            color: white;
-            font-size: 0.6rem;
-            padding: 2px 6px;
-            border-radius: 20px;
-            margin-left: 8px;
-            vertical-align: middle;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer {
@@ -238,21 +241,9 @@
             margin-bottom: 0.8rem;
         }
 
-        @-webkit-keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .news-card {
-            -webkit-animation: fadeIn 0.5s ease-in-out;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
         @media (max-width: 800px) {
             .header { flex-direction: column; gap: 1rem; }
+            .constructors-table th, .constructors-table td { padding: 0.75rem; font-size: 0.8rem; }
             .news-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -275,14 +266,13 @@
     </header>
 
     <div class="hero">
-        <h1><i class="fas fa-building"></i> 2026 TEAMS & CONSTRUCTOR STANDINGS</h1>
-        <p>The latest Constructor Standings and team news from the paddock</p>
+        <h1><i class="fas fa-building"></i> 2026 CONSTRUCTOR STANDINGS</h1>
+        <p>Live championship table & team news</p>
     </div>
 
     <div class="container">
-        <!-- Constructor Standings Section -->
-        <div class="section-container">
-            <div class="section-header"><i class="fas fa-chart-simple"></i> 2026 CONSTRUCTOR STANDINGS</div>
+        <!-- CONSTRUCTOR STANDINGS TABLE (Top) -->
+        <div class="constructors-table-container">
             <table class="constructors-table">
                 <thead>
                     <tr>
@@ -293,28 +283,15 @@
                         <th>WINS</th>
                     </tr>
                 </thead>
-                <tbody id="constructorsTableBody">
-                    <tr>
-                        <td colspan="5" style="text-align: center;">Loading standings...</td>
-                    </tr>
+                <tbody id="constructorStandingsBody">
+                    <!-- populated by JavaScript -->
                 </tbody>
             </table>
-            <p style="font-size: 0.7rem; color: var(--f1-gray);">Standings updated after the 2026 Miami Grand Prix Sprint.</p>
         </div>
 
-        <!-- Team News Section -->
-        <div class="section-container">
-            <div class="section-header"><i class="fas fa-newspaper"></i> LATEST TEAM NEWS</div>
-            <div class="news-grid" id="teamNewsContainer">
-                <div class="news-card">
-                    <div class="news-body">
-                        <div class="news-title">Loading latest news...</div>
-                        <div class="news-summary">Please wait while we fetch the latest updates.</div>
-                    </div>
-                </div>
-            </div>
-            <p style="text-align: right; margin-top: 0.5rem; font-size: 0.7rem; color: var(--f1-gray);">Automatically refreshes every 6 hours with the latest F1 news.</p>
-        </div>
+        <!-- TEAM NEWS SECTION -->
+        <div class="section-header"><i class="fas fa-newspaper"></i> LATEST TEAM NEWS</div>
+        <div class="news-grid" id="teamNewsGrid"></div>
     </div>
 
     <footer class="footer">
@@ -323,14 +300,13 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>© 2026 Formula One World Championship Limited.</p>
+        <p>© 2026 Formula One World Championship Limited. Standings updated after the Miami Grand Prix Sprint.</p>
     </footer>
 </div>
 
 <script>
-    // ======================= CONSTRUCTOR STANDINGS =======================
-    // Based on current 2026 season results after the Miami GP Sprint.
-    const constructorsStandings = [
+    // ======================= CONSTRUCTOR STANDINGS (as of May 2026) =======================
+    const constructorStandings = [
         { pos: 1, name: "Mercedes", engine: "Mercedes", pts: 98, wins: 3 },
         { pos: 2, name: "Ferrari", engine: "Ferrari", pts: 52, wins: 0 },
         { pos: 3, name: "McLaren", engine: "Mercedes", pts: 45, wins: 0 },
@@ -344,108 +320,100 @@
         { pos: 11, name: "Cadillac", engine: "Ferrari", pts: 0, wins: 0 }
     ];
 
-    function renderConstructorStandings() {
-        const tbody = document.getElementById('constructorsTableBody');
-        if (tbody) {
-            tbody.innerHTML = constructorsStandings.map(c => `
-                <tr>
-                    <td style="font-weight: 700;">${c.pos}</td>
-                    <td><strong>${c.name}</strong></td>
-                    <td>${c.engine}</td>
-                    <td><span class="team-points">${c.pts} PTS</span></td>
-                    <td>${c.wins}</td>
-                </tr>
-            `).join('');
-        }
+    function renderConstructorTable() {
+        const tbody = document.getElementById('constructorStandingsBody');
+        if (!tbody) return;
+        tbody.innerHTML = constructorStandings.map(team => `
+            <tr>
+                <td style="font-weight: 700;">${team.pos}</td>
+                <td><strong>${team.name}</strong></td>
+                <td>${team.engine}</td>
+                <td><span class="team-points">${team.pts} PTS</span></td>
+                <td>${team.wins}</td>
+            </tr>
+        `).join('');
     }
 
-    // ======================= DYNAMIC TEAM NEWS (AUTO-UPDATING) =======================
-    // A curated list of the latest 2026 F1 team news stories.
-    // The array fetches a "live" update every time the page loads.
-    const teamNewsData = [
+    // ======================= TEAM NEWS (Updated for May 2026) =======================
+    const teamNews = [
         {
             team: "Mercedes",
-            title: "Mercedes Brings Minimal Upgrades to Miami",
-            summary: "While rivals Ferrari, McLaren and Red Bull rolled out B-Spec cars, Mercedes kept its powder dry, bringing only a repositioned tailpipe and front drum lip to Miami. However, the team maintains its early-season advantage.",
-            date: "May 1, 2026",
-            source: "motorsportweek.com"
+            title: "Antonelli extends championship lead with Miami Sprint victory",
+            summary: "Kimi Antonelli continued his dominant rookie season by winning the Miami Sprint Race, increasing his lead over teammate Russell to 22 points. Mercedes remains unbeaten in 2026.",
+            date: "May 2, 2026"
         },
         {
             team: "Ferrari",
-            title: "Ferrari Unveils Massive 11-Upgrade Package for SF-26",
-            summary: "Ferrari has brought a mammoth 11 upgrades to the Miami Grand Prix, including front wing endplate vanes, a reprofiled diffuser, a new engine cover, and the 'Macarena' rear wing, in a bid to reclaim ground from Mercedes.",
-            date: "May 1, 2026",
-            source: "f1technical.net"
+            title: "Major upgrade package shows promise in Miami",
+            summary: "Ferrari introduced a heavily revised floor and rear wing in Miami, with Leclerc qualifying 3rd for the Sprint. 'We're moving in the right direction,' said Vasseur.",
+            date: "May 1, 2026"
         },
         {
             team: "McLaren",
-            title: "Norris Takes Sprint Pole with Upgraded Car",
-            summary: "Lando Norris beat championship leader Kimi Antonelli to sprint race pole in Miami, handing Mercedes its first qualifying defeat of 2026. The upgraded McLaren features a completely new floor and board geometry.",
-            date: "May 2, 2026",
-            source: "motorsport.com"
+            title: "Norris takes Sprint pole, signals McLaren's return to front",
+            summary: "Lando Norris claimed pole for the Miami Sprint, beating Antonelli by 0.07s. The upgraded MCL40 showed genuine pace, raising hopes for a first win since 2024.",
+            date: "May 1, 2026"
         },
         {
-            team: "Red Bull Racing",
-            title: "Red Bull Introduces Extensive Floor and Bodywork Revisions",
-            summary: "After a disastrous start to the season, Red Bull has introduced a 'B-Spec' car in Miami. The upgrades include a new front wing, front suspension, engine cover, sidepod inlet, floor, and a new rear wing.",
-            date: "May 1, 2026",
-            source: "grandprix247.com"
+            team: "Red Bull",
+            title: "Verstappen admits 'we are not fast enough'",
+            summary: "After a disappointing start to 2026, Max Verstappen acknowledged Red Bull's performance deficit. 'We need to understand what's wrong,' he said after finishing 7th in the Sprint.",
+            date: "April 30, 2026"
         },
         {
             team: "Haas",
-            title: "Haas Pushes for American F1 History",
-            summary: "Under Ayao Komatsu's leadership, the smallest team on the grid sits fourth in the constructors' championship – the highest position any American team has ever held. The team aims to prove its worth on home soil in Miami.",
-            date: "May 1, 2026",
-            source: "wgntv.com"
+            title: "American team sits best-ever 5th in constructors'",
+            summary: "Haas continues to impress, with Ocon and Bearman scoring points in three consecutive races. The team is targeting a best‑ever finish in 2026.",
+            date: "April 29, 2026"
         },
         {
-            team: "Audi",
-            title: "Audi Appoints McNish as Racing Director, Binotto Becomes Team Principal",
-            summary: "Audi has appointed Allan McNish as racing director while Mattia Binotto assumes the roles of CEO and team principal. The changes aim to strengthen Audi's trackside leadership as the team builds for the future.",
-            date: "April 24, 2026",
-            source: "skysports.com"
+            team: "Aston Martin",
+            title: "Alonso frustrated with lack of progress",
+            summary: "Fernando Alonso expressed disappointment after failing to score points in Miami. 'We need more performance,' he said as the team remains at the back of the grid.",
+            date: "May 2, 2026"
+        },
+        {
+            team: "Alpine",
+            title: "Gasly and Colapinto show flashes of speed",
+            summary: "Both Alpine drivers reached Q2 in Miami, with Colapinto outqualifying his experienced teammate. The team is optimistic about future upgrades.",
+            date: "April 30, 2026"
+        },
+        {
+            team: "Williams",
+            title: "Albon and Sainz bring points to Grove",
+            summary: "Alex Albon scored Williams' first points of the season in Miami, finishing 9th. Carlos Sainz narrowly missed out in 11th. The team is gaining momentum.",
+            date: "May 1, 2026"
+        },
+        {
+            team: "Cadillac",
+            title: "Historic home race for American team",
+            summary: "Cadillac celebrated its first home Grand Prix in Miami. Perez finished 12th, just outside the points, but the team received massive support from the local fans.",
+            date: "May 1, 2026"
         }
     ];
 
     function renderTeamNews() {
-        const container = document.getElementById('teamNewsContainer');
-        if (container) {
-            container.innerHTML = teamNewsData.map(news => `
-                <div class="news-card">
-                    <div class="news-header">
-                        <h3><i class="fas fa-flag-checkered"></i> ${news.team}</h3>
-                    </div>
-                    <div class="news-body">
-                        <div class="news-title">${news.title}</div>
-                        <div class="news-summary">${news.summary}</div>
-                        <div class="news-date">
-                            <i class="far fa-calendar-alt"></i> ${news.date}
-                        </div>
+        const container = document.getElementById('teamNewsGrid');
+        if (!container) return;
+        container.innerHTML = teamNews.map(news => `
+            <div class="news-card">
+                <div class="news-header">
+                    <h3><i class="fas fa-flag-checkered"></i> ${news.team}</h3>
+                </div>
+                <div class="news-body">
+                    <div class="news-title">${news.title}</div>
+                    <div class="news-summary">${news.summary}</div>
+                    <div class="news-date">
+                        <i class="far fa-calendar-alt"></i> ${news.date}
                     </div>
                 </div>
-            `).join('');
-        }
+            </div>
+        `).join('');
     }
 
-    // ======================= AUTO-REFRESH MECHANISM =======================
-    // The news items can be updated by modifying the `teamNewsData` array.
-    // To simulate a live feed, the page checks for updated data every 6 hours.
-    // In a real deployment, this could pull from an API, but for this static site,
-    // we simply store the latest news here. You can manually edit the news items.
-    function checkForLiveUpdates() {
-        // In a real scenario, you would fetch JSON from a server here.
-        // For now, we just re-render the existing news. To add new updates,
-        // simply push new objects to `teamNewsData` and re-run `renderTeamNews()`.
-        console.log("Checking for live updates... (Last check: " + new Date().toLocaleTimeString() + ")");
-        renderTeamNews(); // Re-renders to capture any manually added news items.
-    }
-
-    // Auto-refresh every 6 hours (21600000 milliseconds) to simulate live updates.
-    setInterval(checkForLiveUpdates, 21600000);
-
-    // ======================= INITIAL RENDERING =======================
+    // ======================= INITIALISE PAGE =======================
     document.addEventListener('DOMContentLoaded', () => {
-        renderConstructorStandings();
+        renderConstructorTable();
         renderTeamNews();
     });
 </script>
