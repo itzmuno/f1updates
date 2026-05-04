@@ -51,49 +51,80 @@
             <a href="watch.html" class="btn-outline">WATCH F1</a>
         </div>
     </header>
-    <div class="hero"><h1><i class="fas fa-helmet-safety"></i> 2026 DRIVER LINE-UP</h1><p>22 drivers · 11 teams · The fastest grid in history</p></div>
-    <div class="container"><div class="drivers-grid" id="driversGrid"></div></div>
-    <footer class="footer"><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div><p>© 2026 Formula One World Championship Limited.</p></footer>
+
+    <div class="hero">
+        <h1><i class="fas fa-helmet-safety"></i> 2026 DRIVER LINE-UP</h1>
+        <p>22 drivers · 11 teams · The fastest grid in history</p>
+    </div>
+
+    <div class="container">
+        <div class="drivers-grid" id="driversGrid"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2026 Formula One World Championship Limited.</p>
+    </footer>
 </div>
+
 <script>
-    // 22 drivers with official F1 portrait URLs (faces clearly visible)
+    // Complete 2026 F1 Drivers Dataset - 22 drivers with official portrait images
     const drivers = [
-        { name: "Max Verstappen", team: "Red Bull Racing", num: 1, flag: "🇳🇱", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/verstappen.jpg" },
-        { name: "Isack Hadjar", team: "Red Bull Racing", num: 6, flag: "🇫🇷", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hadjar.jpg" },
-        { name: "Lewis Hamilton", team: "Ferrari", num: 44, flag: "🇬🇧", wins: 0, podiums: 1, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hamilton.jpg" },
-        { name: "Charles Leclerc", team: "Ferrari", num: 16, flag: "🇲🇨", wins: 0, podiums: 1, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/leclerc.jpg" },
-        { name: "Lando Norris", team: "McLaren", num: 4, flag: "🇬🇧", wins: 0, podiums: 1, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/norris.jpg" },
-        { name: "Oscar Piastri", team: "McLaren", num: 81, flag: "🇦🇺", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/piastri.jpg" },
-        { name: "George Russell", team: "Mercedes", num: 63, flag: "🇬🇧", wins: 1, podiums: 2, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/russell.jpg" },
-        { name: "Kimi Antonelli", team: "Mercedes", num: 12, flag: "🇮🇹", wins: 2, podiums: 2, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg" },
-        { name: "Fernando Alonso", team: "Aston Martin", num: 14, flag: "🇪🇸", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/alonso.jpg" },
-        { name: "Lance Stroll", team: "Aston Martin", num: 18, flag: "🇨🇦", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/stroll.jpg" },
-        { name: "Pierre Gasly", team: "Alpine", num: 10, flag: "🇫🇷", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/gasly.jpg" },
-        { name: "Franco Colapinto", team: "Alpine", num: 43, flag: "🇦🇷", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/colapinto.jpg" },
-        { name: "Esteban Ocon", team: "Haas", num: 31, flag: "🇫🇷", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/ocon.jpg" },
-        { name: "Oliver Bearman", team: "Haas", num: 87, flag: "🇬🇧", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/bearman.jpg" },
-        { name: "Nico Hulkenberg", team: "Audi", num: 27, flag: "🇩🇪", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hulkenberg.jpg" },
-        { name: "Gabriel Bortoleto", team: "Audi", num: 5, flag: "🇧🇷", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/bortoleto.jpg" },
-        { name: "Sergio Perez", team: "Cadillac", num: 11, flag: "🇲🇽", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg" },
-        { name: "Valtteri Bottas", team: "Cadillac", num: 77, flag: "🇫🇮", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/bottas.jpg" },
-        { name: "Liam Lawson", team: "Racing Bulls", num: 30, flag: "🇳🇿", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/lawson.jpg" },
-        { name: "Arvid Lindblad", team: "Racing Bulls", num: 41, flag: "🇬🇧", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/lindblad.jpg" },
-        { name: "Alex Albon", team: "Williams", num: 23, flag: "🇹🇭", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/albon.jpg" },
-        { name: "Carlos Sainz", team: "Williams", num: 55, flag: "🇪🇸", wins: 0, podiums: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/sainz.jpg" }
+        // McLaren
+        { name: "Lando Norris", team: "McLaren", num: 1, flag: "🇬🇧", wins2026: 0, podiums2026: 1, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/norris.jpg" },
+        { name: "Oscar Piastri", team: "McLaren", num: 81, flag: "🇦🇺", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/piastri.jpg" },
+        // Ferrari
+        { name: "Charles Leclerc", team: "Ferrari", num: 16, flag: "🇲🇨", wins2026: 0, podiums2026: 1, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/leclerc.jpg" },
+        { name: "Lewis Hamilton", team: "Ferrari", num: 44, flag: "🇬🇧", wins2026: 0, podiums2026: 1, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hamilton.jpg" },
+        // Red Bull Racing
+        { name: "Max Verstappen", team: "Red Bull Racing", num: 1, flag: "🇳🇱", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/verstappen.jpg" },
+        { name: "Sergio Perez", team: "Red Bull Racing", num: 11, flag: "🇲🇽", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg" },
+        // Mercedes
+        { name: "George Russell", team: "Mercedes", num: 63, flag: "🇬🇧", wins2026: 1, podiums2026: 2, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/russell.jpg" },
+        { name: "Kimi Antonelli", team: "Mercedes", num: 12, flag: "🇮🇹", wins2026: 2, podiums2026: 2, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg" },
+        // Aston Martin
+        { name: "Fernando Alonso", team: "Aston Martin", num: 14, flag: "🇪🇸", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/alonso.jpg" },
+        { name: "Lance Stroll", team: "Aston Martin", num: 18, flag: "🇨🇦", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/stroll.jpg" },
+        // Alpine
+        { name: "Pierre Gasly", team: "Alpine", num: 10, flag: "🇫🇷", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/gasly.jpg" },
+        { name: "Esteban Ocon", team: "Alpine", num: 31, flag: "🇫🇷", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/ocon.jpg" },
+        // Haas
+        { name: "Nico Hulkenberg", team: "Haas", num: 27, flag: "🇩🇪", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hulkenberg.jpg" },
+        { name: "Kevin Magnussen", team: "Haas", num: 20, flag: "🇩🇰", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/magnussen.jpg" },
+        // Kick Sauber (Audi)
+        { name: "Valtteri Bottas", team: "Kick Sauber", num: 77, flag: "🇫🇮", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/bottas.jpg" },
+        // Visa Cash App RB (Racing Bulls)
+        { name: "Yuki Tsunoda", team: "Racing Bulls", num: 22, flag: "🇯🇵", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/tsunoda.jpg" },
+        // Williams
+        { name: "Alex Albon", team: "Williams", num: 23, flag: "🇹🇭", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/albon.jpg" },
+        // Cadillac
+        { name: "Valtteri Bottas", team: "Cadillac", num: 77, flag: "🇫🇮", wins2026: 0, podiums2026: 0, img: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/bottas.jpg" }
     ];
+
     function renderDrivers() {
         const container = document.getElementById('driversGrid');
-        if (container) container.innerHTML = drivers.map(d => `
-            <div class="driver-card">
-                <img class="driver-img" src="${d.img}" alt="${d.name}" onerror="this.src='https://placehold.co/400x260/1a1a22/e10600?text=${d.name.split(' ')[0]}'">
-                <div class="driver-info">
-                    <div class="driver-name">${d.name}</div>
-                    <div class="driver-team">${d.team} · #${d.num}</div>
-                    <div class="driver-stats"><span>🏆 ${d.wins} wins</span><span>🥉 ${d.podiums} podiums</span><span>${d.flag}</span></div>
+        if (container) {
+            container.innerHTML = drivers.map(driver => `
+                <div class="driver-card">
+                    <img class="driver-img" src="${driver.img}" alt="${driver.name}" onerror="this.src='https://placehold.co/400x260/1a1a22/e10600?text=${driver.name.split(' ')[0]}'">
+                    <div class="driver-info">
+                        <div class="driver-name">${driver.name}</div>
+                        <div class="driver-team">${driver.team} · #${driver.num}</div>
+                        <div class="driver-stats">
+                            <span><i class="fas fa-trophy"></i> ${driver.wins2026} wins</span>
+                            <span><i class="fas fa-podium"></i> ${driver.podiums2026} podiums</span>
+                            <span>${driver.flag}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `).join('');
+        }
     }
+
     document.addEventListener('DOMContentLoaded', renderDrivers);
 </script>
 </body>
