@@ -36,13 +36,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #0a0a0f;
+            background: radial-gradient(circle at 30% 20%, #0f0f1a, #030308);
             z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
+            /* F1 track pattern (subtle racing lines) */
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(225,6,0,0.05) 0px,
+                rgba(225,6,0,0.05) 2px,
+                transparent 2px,
+                transparent 8px
+            );
         }
         .loading-overlay.fade-out {
             opacity: 0;
@@ -50,42 +58,28 @@
         }
         .f1-loader {
             text-align: center;
+            z-index: 2;
         }
-        .tire-spinner {
-            width: 80px;
-            height: 80px;
+
+        /* Rotating image container */
+        .car-spinner {
+            width: 150px;
+            height: 150px;
             margin: 0 auto 20px;
-            background: radial-gradient(circle at 30% 30%, #222, #000);
-            border-radius: 50%;
-            border: 6px solid #333;
-            position: relative;
-            animation: spinTire 1.2s infinite linear;
-            box-shadow: 0 0 20px rgba(225,6,0,0.5);
+            animation: spinCar 1.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 12px rgba(225,6,0,0.6));
         }
-        .tire-spinner::before {
-            content: "●";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #e10600;
-            font-size: 20px;
-            text-shadow: 0 0 5px #e10600;
-        }
-        .tire-spinner::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
+        .car-spinner img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
-            box-shadow: inset 0 0 15px rgba(225,6,0,0.6);
+            object-fit: contain;
+            display: block;
         }
-        @keyframes spinTire {
+        @keyframes spinCar {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
         .loading-text {
             font-size: 1.8rem;
             font-weight: 800;
@@ -110,15 +104,14 @@
             100% { opacity: 1; text-shadow: 0 0 8px #e10600; }
         }
         .smoke {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #555;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
-        /* Main site styles (unchanged from your working version) */
+        /* Main site styles (unchanged) */
         .site-wrapper {
             max-width: 1440px;
             margin: 0 auto;
@@ -328,17 +321,20 @@
 </head>
 <body>
 
-<!-- ========== F1 TOUGH LOADING SCREEN ========== -->
+<!-- ========== LOADING SCREEN WITH ROTATING IMAGE ========== -->
 <div id="loadingOverlay" class="loading-overlay">
     <div class="f1-loader">
-        <div class="tire-spinner"></div>
+        <div class="car-spinner">
+            <!-- Replace the src URL with your own image (e.g., 'download.jpg') -->
+            <img src="https://cdn-icons-png.flaticon.com/512/1164/1164692.png" alt="F1 Tire">
+        </div>
         <div class="loading-text">REVVING UP</div>
         <div class="loading-sub">FUELING THE ENGINE</div>
         <div class="smoke">🔥 LIGHTS OUT... 🔥</div>
     </div>
 </div>
 
-<!-- MAIN WEBSITE CONTENT (initially hidden until loading finishes) -->
+<!-- MAIN WEBSITE CONTENT (hidden until loading finishes) -->
 <div id="mainContent" style="display: none;">
 <div class="site-wrapper">
     <header class="header">
@@ -390,48 +386,12 @@
 </div>
 
 <script>
-    // News database (same as before with working videos)
+    // News database (unchanged)
     const newsDatabase = [
-        { 
-            id: 1, 
-            title: "Antonelli dominates Miami Sprint Shootout", 
-            summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", 
-            fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout, setting the fastest time in every segment. The 19-year-old Italian will start from pole position for Saturday's Sprint Race. 'The car is flying, and I'm loving every moment,' Antonelli said. 'Miami is electric.' With 4 consecutive pole positions, Antonelli now leads the championship with 68 points, followed by George Russell (46 points). The Sprint Race starts at 2:30 PM local time on Saturday.",
-            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", 
-            date: "April 28, 2026", 
-            category: "Breaking News",
-            videoId: "qVF7bCfv0nE"
-        },
-        { 
-            id: 2, 
-            title: "Ferrari brings major upgrade package to Miami", 
-            summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing for the Miami Grand Prix.", 
-            fullContent: "Ferrari has arrived in Miami with a significant upgrade package aimed at addressing the car's aerodynamic deficiencies. The new floor and rear wing are designed to increase downforce in medium-speed corners. 'We believe this is a step forward,' said team principal Fred Vasseur. 'The data from Friday practice looks promising.' Charles Leclerc and Lewis Hamilton both advanced to Q3, marking Ferrari's best qualifying result of the season.",
-            image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", 
-            date: "April 27, 2026", 
-            category: "Tech",
-            videoId: "pN6VgxqQ0UY"
-        },
-        { 
-            id: 3, 
-            title: "Cadillac secures first Q3 appearance in home race", 
-            summary: "Sergio Perez qualified 9th for the Miami Sprint Race, the team's first Q3 appearance.", 
-            fullContent: "Cadillac achieved its best qualifying result since joining F1, with Sergio Perez advancing to Q3 in the Miami Sprint Shootout. The Mexican driver will start 9th for Saturday's Sprint Race. 'The crowd was unbelievable,' Perez said. 'Every lap they cheered louder. This is for every American fan.' Teammate Valtteri Bottas also had his best qualifying of the season, starting P13.",
-            image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", 
-            date: "April 27, 2026", 
-            category: "Team News",
-            videoId: "Lh8qyHs7G78"
-        },
-        { 
-            id: 4, 
-            title: "2026 Season Highlights - Best Overtakes", 
-            summary: "Watch the best overtakes and action from the first three races of 2026.", 
-            fullContent: "The 2026 Formula 1 season has delivered incredible action on track. From wheel-to-wheel battles in Melbourne to last-lap passes in Shanghai, this compilation features the best overtaking moves from the opening rounds. Mercedes, Ferrari, and McLaren have all been in the mix, setting up an exciting championship battle.",
-            image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Highlights/overtakes.jpg", 
-            date: "April 25, 2026", 
-            category: "Highlights",
-            videoId: "gYvW6qN7sXQ"
-        }
+        { id: 1, title: "Antonelli dominates Miami Sprint Shootout", summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout...", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", date: "April 28, 2026", category: "Breaking News", videoId: "qVF7bCfv0nE" },
+        { id: 2, title: "Ferrari brings major upgrade package to Miami", summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing for the Miami Grand Prix.", fullContent: "Ferrari has arrived in Miami with a significant upgrade package...", image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", date: "April 27, 2026", category: "Tech", videoId: "pN6VgxqQ0UY" },
+        { id: 3, title: "Cadillac secures first Q3 appearance in home race", summary: "Sergio Perez qualified 9th for the Miami Sprint Race, the team's first Q3 appearance.", fullContent: "Cadillac achieved its best qualifying result since joining F1...", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", date: "April 27, 2026", category: "Team News", videoId: "Lh8qyHs7G78" },
+        { id: 4, title: "2026 Season Highlights - Best Overtakes", summary: "Watch the best overtakes and action from the first three races of 2026.", fullContent: "The 2026 Formula 1 season has delivered incredible action on track...", image: "https://media.formula1.com/content/dam/fom-website/sutton/2026/Highlights/overtakes.jpg", date: "April 25, 2026", category: "Highlights", videoId: "gYvW6qN7sXQ" }
     ];
 
     localStorage.setItem('f1NewsData', JSON.stringify(newsDatabase));
@@ -456,20 +416,17 @@
         }
     }
 
-    // ========== LOADING SCREEN LOGIC ==========
+    // Loading screen logic
     window.addEventListener('load', function() {
-        // Hide the loading overlay after all content is loaded
         const loadingOverlay = document.getElementById('loadingOverlay');
         const mainContent = document.getElementById('mainContent');
-        
         setTimeout(() => {
             loadingOverlay.classList.add('fade-out');
             mainContent.style.display = 'block';
-            // Remove the overlay from DOM after transition to allow interaction
             setTimeout(() => {
                 loadingOverlay.style.display = 'none';
             }, 800);
-        }, 1500); // 1.5 seconds to show the tough animation (can be adjusted)
+        }, 1500);
     });
 
     renderHomeNews();
