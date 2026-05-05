@@ -29,6 +29,96 @@
             --f1-gray: #9e9eae;
         }
 
+        /* ========== LOADING SCREEN ========== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loading-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .f1-loader {
+            text-align: center;
+        }
+        .tire-spinner {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: radial-gradient(circle at 30% 30%, #222, #000);
+            border-radius: 50%;
+            border: 6px solid #333;
+            position: relative;
+            animation: spinTire 1.2s infinite linear;
+            box-shadow: 0 0 20px rgba(225,6,0,0.5);
+        }
+        .tire-spinner::before {
+            content: "●";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #e10600;
+            font-size: 20px;
+            text-shadow: 0 0 5px #e10600;
+        }
+        .tire-spinner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: inset 0 0 15px rgba(225,6,0,0.6);
+        }
+        @keyframes spinTire {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #fff, #e10600);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-top: 20px;
+            animation: pulseText 1s infinite alternate;
+        }
+        .loading-sub {
+            font-size: 0.9rem;
+            color: #e10600;
+            margin-top: 10px;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        @keyframes pulseText {
+            0% { opacity: 0.6; text-shadow: 0 0 0px #e10600; }
+            100% { opacity: 1; text-shadow: 0 0 8px #e10600; }
+        }
+        .smoke {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #555;
+        }
+
+        /* Main site styles (unchanged from your working version) */
         .site-wrapper {
             max-width: 1440px;
             margin: 0 auto;
@@ -237,6 +327,19 @@
     </style>
 </head>
 <body>
+
+<!-- ========== F1 TOUGH LOADING SCREEN ========== -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="f1-loader">
+        <div class="tire-spinner"></div>
+        <div class="loading-text">REVVING UP</div>
+        <div class="loading-sub">FUELING THE ENGINE</div>
+        <div class="smoke">🔥 LIGHTS OUT... 🔥</div>
+    </div>
+</div>
+
+<!-- MAIN WEBSITE CONTENT (initially hidden until loading finishes) -->
+<div id="mainContent" style="display: none;">
 <div class="site-wrapper">
     <header class="header">
         <div class="logo-area">
@@ -284,10 +387,10 @@
         <p>© 2026 Formula One World Championship Limited. Click any news for full story.</p>
     </footer>
 </div>
+</div>
 
 <script>
-    // News database with **WORKING YouTube video IDs** from official F1 channel
-    // These are real, publicly available F1 videos that will play
+    // News database (same as before with working videos)
     const newsDatabase = [
         { 
             id: 1, 
@@ -331,7 +434,6 @@
         }
     ];
 
-    // Store news in localStorage so detail page can access it
     localStorage.setItem('f1NewsData', JSON.stringify(newsDatabase));
 
     function renderHomeNews() {
@@ -354,7 +456,23 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', renderHomeNews);
+    // ========== LOADING SCREEN LOGIC ==========
+    window.addEventListener('load', function() {
+        // Hide the loading overlay after all content is loaded
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const mainContent = document.getElementById('mainContent');
+        
+        setTimeout(() => {
+            loadingOverlay.classList.add('fade-out');
+            mainContent.style.display = 'block';
+            // Remove the overlay from DOM after transition to allow interaction
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 800);
+        }, 1500); // 1.5 seconds to show the tough animation (can be adjusted)
+    });
+
+    renderHomeNews();
 </script>
 </body>
 </html>
