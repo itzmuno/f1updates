@@ -7,219 +7,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #0b0b12;
-            font-family: 'Inter', 'Titillium Web', sans-serif;
-            color: #ffffff;
-            line-height: 1.4;
-            overflow-x: hidden;
-        }
-
-        :root {
-            --f1-red: #e10600;
-            --f1-black: #0a0a0f;
-            --f1-dark-card: #111116;
-            --f1-border: #22222c;
-            --f1-gray: #9e9eae;
-        }
-
-        .site-wrapper {
-            max-width: 1440px;
-            margin: 0 auto;
-            background: var(--f1-black);
-            min-height: 100vh;
-        }
-
-        .header {
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            background: #08080c;
-            border-bottom: 3px solid var(--f1-red);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-        }
-
-        .f1-badge {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-            color: white;
-        }
-        .f1-badge span {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--f1-red);
-            margin-left: 2px;
-        }
-        .tagline {
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--f1-gray);
-            letter-spacing: 1px;
-            border-left: 2px solid var(--f1-red);
-            padding-left: 12px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--f1-red);
-            border-bottom: 2px solid var(--f1-red);
-        }
-        .btn-outline {
-            border: 1.5px solid var(--f1-red);
-            padding: 0.4rem 1.2rem;
-            border-radius: 4px;
-            background: transparent;
-            color: white;
-            font-weight: 700;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        .btn-outline:hover {
-            background: var(--f1-red);
-            color: white;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #0e0e18, #08080c);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--f1-red);
-        }
-        .hero h1 {
-            font-size: 2rem;
-            font-weight: 800;
-        }
-
-        .detail-container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .back-btn {
-            background: var(--f1-dark-card);
-            border: 1px solid var(--f1-border);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            transition: 0.2s;
-        }
-        .back-btn:hover {
-            border-color: var(--f1-red);
-            color: var(--f1-red);
-        }
-
-        .detail-image {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            margin-bottom: 1.5rem;
-            border-radius: 20px;
-            overflow: hidden;
-            background-color: #000;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .detail-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .detail-meta {
-            color: var(--f1-red);
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .detail-content {
-            line-height: 1.7;
-            color: #ccc;
-            font-size: 1rem;
-        }
-        .detail-content p {
-            margin-bottom: 1rem;
-        }
-
-        .footer {
-            background: #06060a;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 0.7rem;
-            border-top: 1px solid rgba(225,6,0,0.3);
-            margin-top: 2rem;
-        }
-        .social-icons {
-            display: flex;
-            justify-center: center;
-            gap: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        @media (max-width: 800px) {
-            .header { flex-direction: column; gap: 1rem; }
-            .detail-title { font-size: 1.5rem; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #0b0b12; font-family: 'Inter', 'Titillium Web', sans-serif; color: #ffffff; line-height: 1.4; overflow-x: hidden; }
+        :root { --f1-red: #e10600; --f1-black: #0a0a0f; --f1-dark-card: #111116; --f1-border: #22222c; --f1-gray: #9e9eae; }
+        .site-wrapper { max-width: 1440px; margin: 0 auto; background: var(--f1-black); min-height: 100vh; }
+        .header { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: #08080c; border-bottom: 3px solid var(--f1-red); position: sticky; top: 0; z-index: 100; }
+        .logo-area { display: flex; align-items: baseline; gap: 12px; }
+        .f1-badge { font-size: 2rem; font-weight: 900; letter-spacing: -1.5px; color: white; }
+        .f1-badge span { font-size: 1rem; font-weight: 500; color: var(--f1-red); margin-left: 2px; }
+        .tagline { font-size: 0.7rem; font-weight: 500; color: var(--f1-gray); letter-spacing: 1px; border-left: 2px solid var(--f1-red); padding-left: 12px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .nav-links a { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--f1-red); border-bottom: 2px solid var(--f1-red); }
+        .btn-outline { border: 1.5px solid var(--f1-red); padding: 0.4rem 1.2rem; border-radius: 4px; background: transparent; color: white; font-weight: 700; font-size: 0.8rem; transition: all 0.2s; cursor: pointer; }
+        .btn-outline:hover { background: var(--f1-red); color: white; }
+        .hero { background: linear-gradient(135deg, #0e0e18, #08080c); padding: 2rem; text-align: center; border-bottom: 2px solid var(--f1-red); }
+        .hero h1 { font-size: 2rem; font-weight: 800; }
+        .detail-container { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
+        .back-btn { background: var(--f1-dark-card); border: 1px solid var(--f1-border); padding: 0.5rem 1rem; border-radius: 30px; cursor: pointer; display: inline-block; margin-bottom: 1.5rem; transition: 0.2s; }
+        .back-btn:hover { border-color: var(--f1-red); color: var(--f1-red); }
+        .detail-image { width: 100%; max-height: 450px; object-fit: cover; border-radius: 20px; margin-bottom: 1.5rem; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 1.5rem; border-radius: 20px; overflow: hidden; background-color: #000; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .detail-title { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .detail-meta { color: var(--f1-red); margin-bottom: 1.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .detail-content { line-height: 1.7; color: #ccc; font-size: 1rem; }
+        .footer { background: #06060a; padding: 1.5rem; text-align: center; font-size: 0.7rem; border-top: 1px solid rgba(225,6,0,0.3); margin-top: 2rem; }
+        .social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.8rem; }
+        @media (max-width: 800px) { .header { flex-direction: column; gap: 1rem; } .detail-title { font-size: 1.5rem; } }
     </style>
 </head>
 <body>
 <div class="site-wrapper">
     <header class="header">
-        <div class="logo-area">
-            <div class="f1-badge">FORMULA 1<span>®</span></div>
-            <div class="tagline">OFFICIAL 2026 SEASON</div>
-        </div>
+        <div class="logo-area"><div class="f1-badge">FORMULA 1<span>®</span></div><div class="tagline">OFFICIAL 2026 SEASON</div></div>
         <div class="nav-links">
             <a href="index.html">HOME</a>
             <a href="drivers.html">DRIVERS</a>
@@ -229,80 +50,32 @@
             <a href="watch.html" class="btn-outline">WATCH F1</a>
         </div>
     </header>
-
-    <div class="hero">
-        <h1><i class="fas fa-newspaper"></i> F1 NEWS</h1>
-    </div>
-
+    <div class="hero"><h1><i class="fas fa-newspaper"></i> F1 NEWS</h1></div>
     <div class="detail-container" id="detailContainer">
-        <div class="back-btn" onclick="window.location.href='index.html'">
-            <i class="fas fa-arrow-left"></i> Back to News
-        </div>
-        <div id="newsContent">
-            <!-- Content loaded dynamically -->
-        </div>
+        <div class="back-btn" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> Back to News</div>
+        <div id="newsContent">Loading...</div>
     </div>
-
     <footer class="footer">
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
+        <div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
         <p>© 2026 Formula One World Championship Limited.</p>
     </footer>
 </div>
-
 <script>
-    // Get news ID from URL
-    function getNewsId() {
-        const params = new URLSearchParams(window.location.search);
-        return parseInt(params.get('id'));
-    }
-
-    // Load news data from localStorage
+    function getNewsId() { return parseInt(new URLSearchParams(window.location.search).get('id')); }
     function loadNewsDetail() {
         const newsId = getNewsId();
         const newsData = JSON.parse(localStorage.getItem('f1NewsData') || '[]');
         const article = newsData.find(n => n.id === newsId);
-
-        if (!article) {
-            document.getElementById('newsContent').innerHTML = '<p style="color:red;">News article not found. Please go back to the <a href="index.html">homepage</a>.</p>';
-            return;
-        }
-
-        // OFFICIAL F1 YOUTUBE CHANNEL TRAILER - This video ALWAYS works
-        // Using the official Formula 1 2026 season trailer as a guaranteed working fallback
-        const workingVideoId = "qVF7bCfv0nE";
-        
-        // Use the article's video ID if available, otherwise use the working fallback
-        const finalVideoId = (article.videoId && article.videoId.length > 0) ? article.videoId : workingVideoId;
-        
-        const videoUrl = `https://www.youtube.com/embed/${finalVideoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0&controls=1`;
-
+        if (!article) { document.getElementById('newsContent').innerHTML = '<p style="color:red;">Article not found. <a href="index.html">Back home</a>.</p>'; return; }
+        const videoUrl = `https://www.youtube.com/embed/${article.videoId}?autoplay=0&rel=0&modestbranding=1&controls=1`;
         document.getElementById('newsContent').innerHTML = `
-            <div class="video-wrapper">
-                <iframe 
-                    src="${videoUrl}" 
-                    title="${article.title}" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+            <div class="video-wrapper"><iframe src="${videoUrl}" title="${article.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
             <img class="detail-image" src="${article.image}" onerror="this.src='https://placehold.co/800x450/1a1a22/e10600?text=F1+News'" alt="${article.title}">
             <h1 class="detail-title">${article.title}</h1>
-            <div class="detail-meta">
-                <span><i class="far fa-calendar-alt"></i> ${article.date}</span>
-                <span><i class="fas fa-tag"></i> ${article.category}</span>
-            </div>
-            <div class="detail-content">
-                <p>${article.fullContent}</p>
-                <p><strong>📺 Watch the video above for full highlights and analysis.</strong></p>
-            </div>
+            <div class="detail-meta"><span><i class="far fa-calendar-alt"></i> ${article.date}</span><span><i class="fas fa-tag"></i> ${article.category}</span></div>
+            <div class="detail-content"><p>${article.fullContent}</p></div>
         `;
     }
-
     document.addEventListener('DOMContentLoaded', loadNewsDetail);
 </script>
 </body>
