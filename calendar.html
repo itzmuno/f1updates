@@ -8,8 +8,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #0b0b12; font-family: 'Inter', 'Titillium Web', sans-serif; color: #ffffff; line-height: 1.4; overflow-x: hidden; }
+        body {
+            background-color: #0b0b12;
+            font-family: 'Inter', 'Titillium Web', sans-serif;
+            color: #ffffff;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
         :root { --f1-red: #e10600; --f1-black: #0a0a0f; --f1-dark-card: #111116; --f1-border: #22222c; --f1-gray: #9e9eae; }
+
+        /* ========== PAGE TRANSITION ANIMATION ========== */
+        .page-transition {
+            animation: pageSlideUpFade 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+        @keyframes pageSlideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Staggered card animation */
+        .race-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardFadeInUp 0.4s ease forwards;
+        }
+        @keyframes cardFadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .site-wrapper { max-width: 1440px; margin: 0 auto; background: var(--f1-black); min-height: 100vh; }
         .header { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: #08080c; border-bottom: 3px solid var(--f1-red); position: sticky; top: 0; z-index: 100; }
         .logo-area { display: flex; align-items: baseline; gap: 12px; }
@@ -26,7 +61,7 @@
         .hero p { color: var(--f1-gray); margin-top: 0.5rem; }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
         .calendar-grid { display: flex; flex-direction: column; gap: 1rem; }
-        .race-card { background: var(--f1-dark-card); border: 1px solid var(--f1-border); border-radius: 16px; transition: 0.2s; }
+        .race-card { background: var(--f1-dark-card); border: 1px solid var(--f1-border); border-radius: 16px; transition: all 0.25s ease; }
         .race-card:hover { border-color: var(--f1-red); transform: translateX(5px); }
         .race-content { padding: 1.2rem 1.5rem; }
         .race-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
@@ -147,6 +182,14 @@
         return [...upcoming, ...completed, ...cancelled];
     }
 
+    // Apply staggered animation to race cards
+    function applyStaggeredAnimation() {
+        const cards = document.querySelectorAll('.race-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.03}s`;
+        });
+    }
+
     function renderCalendar() {
         const container = document.getElementById('calendarGrid');
         if (!container) return;
@@ -186,9 +229,22 @@
                 </div>
             `;
         }).join('');
+        // Trigger staggered animation after DOM update
+        setTimeout(applyStaggeredAnimation, 50);
     }
 
-    document.addEventListener('DOMContentLoaded', renderCalendar);
+    // Add the main page transition effect on load
+    function addPageTransition() {
+        const wrapper = document.querySelector('.site-wrapper');
+        if (wrapper) {
+            wrapper.classList.add('page-transition');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        addPageTransition();
+        renderCalendar();
+    });
 </script>
 </body>
 </html>
