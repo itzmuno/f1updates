@@ -87,11 +87,15 @@
 </div>
 
 <script>
+    // News database (exactly the same as before, but all articles now have video IDs)
     const newsDatabase = [
-        { id: 1, title: "Antonelli dominates Miami Sprint Shootout", summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", date: "April 28, 2026", category: "Breaking News" },
-        { id: 2, title: "Ferrari brings major upgrade package to Miami", summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing.", image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", date: "April 27, 2026", category: "Tech" },
-        { id: 3, title: "Cadillac secures first Q3 appearance in home race", summary: "Sergio Perez qualified 9th, the team's first Q3 appearance.", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", date: "April 27, 2026", category: "Team News" }
+        { id: 1, title: "Antonelli dominates Miami Sprint Shootout", summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", date: "April 28, 2026", category: "Breaking News", videoId: "bYFqGzC2P0A" },
+        { id: 2, title: "Ferrari brings major upgrade package to Miami", summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing.", image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", date: "April 27, 2026", category: "Tech", videoId: "RrXqR8ZW4M0" },
+        { id: 3, title: "Cadillac secures first Q3 appearance in home race", summary: "Sergio Perez qualified 9th, the team's first Q3 appearance.", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/perez.jpg", date: "April 27, 2026", category: "Team News", videoId: "yv_3s7yMBSo" }
     ];
+
+    // Store news in localStorage so detail page can access it
+    localStorage.setItem('f1NewsData', JSON.stringify(newsDatabase));
 
     function renderHomeNews() {
         const container = document.getElementById('homeNewsGrid');
