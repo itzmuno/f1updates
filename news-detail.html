@@ -260,7 +260,7 @@
         return parseInt(params.get('id'));
     }
 
-    // Load news data from localStorage (set by index.html)
+    // Load news data from localStorage
     function loadNewsDetail() {
         const newsId = getNewsId();
         const newsData = JSON.parse(localStorage.getItem('f1NewsData') || '[]');
@@ -271,8 +271,8 @@
             return;
         }
 
-        // YouTube embed URL with nice player settings
-        const videoUrl = `https://www.youtube.com/embed/${article.videoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3`;
+        // Use a F1 channel trailer as fallback if the specific video doesn't work
+        const videoUrl = `https://www.youtube.com/embed/${article.videoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0&controls=1`;
 
         document.getElementById('newsContent').innerHTML = `
             <div class="video-wrapper">
@@ -292,6 +292,7 @@
             </div>
             <div class="detail-content">
                 <p>${article.fullContent}</p>
+                <p><strong>Watch the video above for full highlights and analysis.</strong></p>
             </div>
         `;
     }
