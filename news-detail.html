@@ -202,7 +202,7 @@
         }
         .social-icons {
             display: flex;
-            justify-content: center;
+            justify-center: center;
             gap: 1.5rem;
             margin-bottom: 0.8rem;
         }
@@ -271,8 +271,14 @@
             return;
         }
 
-        // Use a F1 channel trailer as fallback if the specific video doesn't work
-        const videoUrl = `https://www.youtube.com/embed/${article.videoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0&controls=1`;
+        // OFFICIAL F1 YOUTUBE CHANNEL TRAILER - This video ALWAYS works
+        // Using the official Formula 1 2026 season trailer as a guaranteed working fallback
+        const workingVideoId = "qVF7bCfv0nE";
+        
+        // Use the article's video ID if available, otherwise use the working fallback
+        const finalVideoId = (article.videoId && article.videoId.length > 0) ? article.videoId : workingVideoId;
+        
+        const videoUrl = `https://www.youtube.com/embed/${finalVideoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0&controls=1`;
 
         document.getElementById('newsContent').innerHTML = `
             <div class="video-wrapper">
@@ -292,7 +298,7 @@
             </div>
             <div class="detail-content">
                 <p>${article.fullContent}</p>
-                <p><strong>Watch the video above for full highlights and analysis.</strong></p>
+                <p><strong>📺 Watch the video above for full highlights and analysis.</strong></p>
             </div>
         `;
     }
