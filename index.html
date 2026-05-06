@@ -29,7 +29,7 @@
             --f1-gray: #9e9eae;
         }
 
-        /* ========== LOADING SCREEN ========== */
+        /* ========== LOADING SCREEN – F1 START LIGHTS ========== */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -43,7 +43,6 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
-            /* F1 track pattern (subtle racing lines) */
             background-image: repeating-linear-gradient(
                 45deg,
                 rgba(225,6,0,0.05) 0px,
@@ -56,28 +55,52 @@
             opacity: 0;
             visibility: hidden;
         }
-        .f1-loader {
-            text-align: center;
-            z-index: 2;
-        }
 
-        /* Rotating image container */
-        .car-spinner {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            animation: spinCar 1.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-            filter: drop-shadow(0 0 12px rgba(225,6,0,0.6));
+        /* Start lights container */
+        .start-lights {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .car-spinner img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
+        .lights-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
         }
-        @keyframes spinCar {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .light {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #222;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transition: all 0.1s ease;
+        }
+        .light.red-lit {
+            background-color: #ff1a1a;
+            box-shadow: 0 0 20px #ff1a1a;
+        }
+        .light.green-lit {
+            background-color: #00ff00;
+            box-shadow: 0 0 25px #00ff00;
+        }
+        /* Green light for "GO" (appears briefly then loading ends) */
+        .go-light {
+            width: 70px;
+            height: 70px;
+            background-color: #222;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+        }
+        .go-light.green {
+            background-color: #00ff00;
+            box-shadow: 0 0 30px #00ff00;
+            color: #000;
         }
 
         .loading-text {
@@ -316,22 +339,29 @@
         @media (max-width: 800px) {
             .header { flex-direction: column; gap: 1rem; }
             .hero-content h1 { font-size: 1.8rem; }
+            .light { width: 35px; height: 35px; gap: 12px; }
+            .lights-row { gap: 12px; }
+            .go-light { width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ========== LOADING SCREEN WITH ROTATING IMAGE ========== -->
+<!-- ========== LOADING SCREEN – F1 START LIGHTS SEQUENCE ========== -->
 <div id="loadingOverlay" class="loading-overlay">
-    <div class="f1-loader">
-        <div class="car-spinner">
-            <!-- Replace the src URL with your own image (e.g., 'download.jpg') -->
-            <img src="https://cdn-icons-png.flaticon.com/512/1164/1164692.png" alt="F1 Tire">
+    <div class="start-lights">
+        <div class="lights-row" id="lightsRow">
+            <div class="light" id="light1"></div>
+            <div class="light" id="light2"></div>
+            <div class="light" id="light3"></div>
+            <div class="light" id="light4"></div>
+            <div class="light" id="light5"></div>
         </div>
-        <div class="loading-text">REVVING UP</div>
-        <div class="loading-sub">FUELING THE ENGINE</div>
-        <div class="smoke">🔥 LIGHTS OUT... 🔥</div>
+        <div class="go-light" id="goLight"></div>
     </div>
+    <div class="loading-text">REVVING UP</div>
+    <div class="loading-sub">FUELING THE ENGINE</div>
+    <div class="smoke">🔥 LIGHTS OUT... 🔥</div>
 </div>
 
 <!-- MAIN WEBSITE CONTENT (hidden until loading finishes) -->
@@ -386,7 +416,7 @@
 </div>
 
 <script>
-    // News database (unchanged)
+    // News database (unchanged – same as before)
     const newsDatabase = [
         { id: 1, title: "Antonelli dominates Miami Sprint Shootout", summary: "Kimi Antonelli took pole position for the Miami Sprint Race, extending his championship lead.", fullContent: "Kimi Antonelli continued his incredible rookie season by dominating the Miami Sprint Shootout...", image: "https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/antonelli.jpg", date: "April 28, 2026", category: "Breaking News", videoId: "qVF7bCfv0nE" },
         { id: 2, title: "Ferrari brings major upgrade package to Miami", summary: "Scuderia Ferrari introduced a heavily revised floor and rear wing for the Miami Grand Prix.", fullContent: "Ferrari has arrived in Miami with a significant upgrade package...", image: "https://media.formula1.com/content/dam/fom-website/teams/Ferrari/ferrari-garage-2026.jpg", date: "April 27, 2026", category: "Tech", videoId: "pN6VgxqQ0UY" },
@@ -416,20 +446,46 @@
         }
     }
 
-    // Loading screen logic
-    window.addEventListener('load', function() {
+    // ========== F1 START LIGHTS SEQUENCE ==========
+    function startLightsSequence() {
+        const lights = [
+            document.getElementById('light1'),
+            document.getElementById('light2'),
+            document.getElementById('light3'),
+            document.getElementById('light4'),
+            document.getElementById('light5')
+        ];
+        const goLight = document.getElementById('goLight');
         const loadingOverlay = document.getElementById('loadingOverlay');
         const mainContent = document.getElementById('mainContent');
-        setTimeout(() => {
-            loadingOverlay.classList.add('fade-out');
-            mainContent.style.display = 'block';
-            setTimeout(() => {
-                loadingOverlay.style.display = 'none';
-            }, 800);
-        }, 1500);
-    });
 
-    renderHomeNews();
+        let lightIndex = 0;
+        const interval = setInterval(() => {
+            if (lightIndex < lights.length) {
+                lights[lightIndex].classList.add('red-lit');
+                lightIndex++;
+            } else {
+                clearInterval(interval);
+                // All red lights are on – now show green "GO" light
+                goLight.classList.add('green');
+                goLight.innerText = 'GO!';
+                // Wait a moment, then fade out loading screen and show content
+                setTimeout(() => {
+                    loadingOverlay.classList.add('fade-out');
+                    mainContent.style.display = 'block';
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 800);
+                }, 600);
+            }
+        }, 500); // 0.5 seconds between each red light
+    }
+
+    // Wait for page to load then start the light sequence
+    window.addEventListener('load', () => {
+        setTimeout(startLightsSequence, 100); // tiny delay to ensure DOM ready
+        renderHomeNews();
+    });
 </script>
 </body>
 </html>
